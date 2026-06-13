@@ -427,23 +427,12 @@
 <footer>REBOOT JAPAN ── 市民による政策提言プラットフォーム</footer>
 
 <script>
-  const SLIDE_BASE = "https://docs.google.com/presentation/d/e/2PACX-1vRUtre1_U76N_ABHd0dek75eFVonLz0NePXY1eQaxTQyVHqo6nluE1zeyrTQeYpAVIcCENIKG7TJwXT/pubembed?start=false&loop=false&delayms=3000&slide=";
-  const TOTAL_SLIDES = 13;
-  const SLIDE_IDS = {
-    1:  "id.p1",
-    2:  "id.p2",
-    3:  "id.p3",
-    4:  "id.p4",
-    5:  "id.p5",
-    6:  "id.p6",
-    7:  "id.p7",
-    8:  "id.g3eaf2d0c939_0_8",
-    9:  "id.g3eaf2d0c939_0_12",
-    10: "id.p10",
-    11: "id.p11",
-    12: "id.p12",
-    13: "id.p13",
-  };
+  const SLIDE_BASE = "https://docs.google.com/presentation/d/e/2PACX-1vSnL9pzea1pjvmsmUn1-x1KxSSBafVfxmtjZv3FhB09Bc6KhHbjaEU7wMzTxN74X7sjhs_zAuELccRg/pubembed?start=false&loop=false&delayms=3000&slide=";
+  const TOTAL_SLIDES = 22;
+  const SLIDE_IDS = {};
+  for (let i = 1; i <= TOTAL_SLIDES; i++) {
+    SLIDE_IDS[i] = "id.p" + i;
+  }
 
   // スライドを生成
   const wrapper = document.getElementById('slidesWrapper');
