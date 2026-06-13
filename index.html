@@ -62,6 +62,20 @@
       white-space: nowrap;
     }
     .comment-toggle-btn:hover { background: var(--red-dark); }
+    .submit-btn {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .submit-btn:hover { border-color: var(--red); color: var(--red); }
 
     /* LAYOUT */
     .layout {
@@ -105,6 +119,19 @@
       margin-bottom: 1.5rem;
     }
     .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--red);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.7; }
 
     /* SLIDES */
     .slides-container {
@@ -356,6 +383,7 @@
 <header>
   <div class="logo">REBOOT <span>JAPAN</span></div>
   <div class="header-right">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYl5XcsuzFhtQgAY_N_0R-zaFrb8Vbrvt7yJ8NwCoDnUt2sg/viewform" target="_blank" class="submit-btn">📩 提言を投稿</a>
     <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
   </div>
 </header>
@@ -367,6 +395,7 @@
       <h1>日本の<em>バグ</em>を<br>修正する</h1>
       <p class="hero-desc">制度・税制・社会の仕組みに潜む問題を、論理と数字で可視化し、具体的な改善案を提言するプラットフォームです。</p>
       <p class="hero-meta">市民による・市民のための・政策議論の場</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYl5XcsuzFhtQgAY_N_0R-zaFrb8Vbrvt7yJ8NwCoDnUt2sg/viewform" target="_blank" class="hero-cta">あなたの提言を投稿する →</a>
     </section>
 
     <div class="slides-container">
