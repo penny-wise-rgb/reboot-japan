@@ -139,6 +139,10 @@
       margin: 0 auto;
       padding: 3rem 3rem 5rem;
     }
+    .slides-container + .slides-container {
+      border-top: 1px solid var(--border);
+      padding-top: 4rem;
+    }
     .slides-label {
       font-size: 0.72rem;
       letter-spacing: 0.3em;
@@ -402,6 +406,11 @@
       <p class="slides-label">提言 #001 ── 日本再起動（REBOOT）プラン</p>
       <div id="slidesWrapper"></div>
     </div>
+
+    <div class="slides-container">
+      <p class="slides-label">提言 #001-2 ── 深掘り編：税制・社会保障の再設計</p>
+      <div id="slidesWrapperDeep"></div>
+    </div>
   </main>
 </div>
 
@@ -427,27 +436,40 @@
 <footer>REBOOT JAPAN ── 市民による政策提言プラットフォーム</footer>
 
 <script>
+  // スライドを生成する関数
+  function renderSlides(wrapperId, slideBase, totalSlides, slideIds) {
+    const wrapper = document.getElementById(wrapperId);
+    for (let i = 1; i <= totalSlides; i++) {
+      const item = document.createElement('div');
+      item.className = 'slide-item';
+      item.innerHTML = `
+        <p class="slide-number">Slide ${i} / ${totalSlides}</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="${slideBase}${slideIds[i]}" allowfullscreen="true" loading="lazy"></iframe>
+        </div>
+        ${i < totalSlides ? '<div class="slide-divider"></div>' : ''}
+      `;
+      wrapper.appendChild(item);
+    }
+  }
+
+  // 提言 #001
   const SLIDE_BASE = "https://docs.google.com/presentation/d/e/2PACX-1vSnL9pzea1pjvmsmUn1-x1KxSSBafVfxmtjZv3FhB09Bc6KhHbjaEU7wMzTxN74X7sjhs_zAuELccRg/pubembed?start=false&loop=false&delayms=3000&slide=";
   const TOTAL_SLIDES = 22;
   const SLIDE_IDS = {};
   for (let i = 1; i <= TOTAL_SLIDES; i++) {
     SLIDE_IDS[i] = "id.p" + i;
   }
+  renderSlides('slidesWrapper', SLIDE_BASE, TOTAL_SLIDES, SLIDE_IDS);
 
-  // スライドを生成
-  const wrapper = document.getElementById('slidesWrapper');
-  for (let i = 1; i <= TOTAL_SLIDES; i++) {
-    const item = document.createElement('div');
-    item.className = 'slide-item';
-    item.innerHTML = `
-      <p class="slide-number">Slide ${i} / ${TOTAL_SLIDES}</p>
-      <div class="slide-frame-wrapper">
-        <iframe src="${SLIDE_BASE}${SLIDE_IDS[i]}" allowfullscreen="true" loading="lazy"></iframe>
-      </div>
-      ${i < TOTAL_SLIDES ? '<div class="slide-divider"></div>' : ''}
-    `;
-    wrapper.appendChild(item);
+  // 提言 #001-2（深掘り編）
+  const SLIDE_BASE_DEEP = "https://docs.google.com/presentation/d/e/2PACX-1vThWcMSoqy5pa4IDGa0JDTbVk7DbHZbCxmk90I2JeBbOqC8IpNpzzfLrJzM0OJ0Ws4E6BHaUHdnBWh5/pubembed?start=false&loop=false&delayms=3000&slide=";
+  const TOTAL_SLIDES_DEEP = 16;
+  const SLIDE_IDS_DEEP = {};
+  for (let i = 1; i <= TOTAL_SLIDES_DEEP; i++) {
+    SLIDE_IDS_DEEP[i] = "id.p" + i;
   }
+  renderSlides('slidesWrapperDeep', SLIDE_BASE_DEEP, TOTAL_SLIDES_DEEP, SLIDE_IDS_DEEP);
 
   // パネル開閉
   let panelOpen = false;
