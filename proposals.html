@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言一覧 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f0;
+      --red: #d62828;
+      --red-dark: #a01f1f;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --gray-light: #888;
+      --border: #2e2e2e;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 200;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a {
+      color: var(--gray-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 5rem 3rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .page-desc {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 580px;
+    }
+
+    /* PROPOSALS LIST */
+    .proposals-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+    }
+    .proposals-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .proposal-card {
+      display: block;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .proposal-card:hover { border-color: var(--red); background: #1f1f1f; }
+    .proposal-card .num {
+      color: var(--red);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .proposal-card h2 {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .proposal-card p {
+      color: var(--gray-light);
+      font-size: 0.92rem;
+      margin-bottom: 0.75rem;
+    }
+    .proposal-card .tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .proposal-card .tag {
+      font-size: 0.72rem;
+      color: var(--gray-light);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    .proposal-card .arrow {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--red);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* upcoming placeholder */
+    .upcoming-card {
+      border: 1px dashed var(--border);
+      padding: 1.75rem 2rem;
+      color: var(--gray-light);
+    }
+    .upcoming-card .num {
+      color: var(--gray-light);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .upcoming-card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gray-light);
+      margin-bottom: 0.5rem;
+    }
+    .upcoming-card p { font-size: 0.85rem; }
+
+    /* FOOTER */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+      color: var(--gray-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .page-header, .proposals-section { padding: 2.5rem 1rem; }
+      header { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header">
+  <p class="page-eyebrow">政策提言プラットフォーム</p>
+  <h1>提言一覧</h1>
+  <p class="page-desc">REBOOT JAPANで公開している政策提言の一覧です。各提言には、論理と数字に基づく問題提起・制度設計・財源試算をまとめています。コメント機能から議論にも参加できます。</p>
+</div>
+
+<div class="proposals-section">
+  <div class="proposals-grid">
+
+    <a class="proposal-card" href="japan_reboot.html">
+      <p class="num">提言 #001</p>
+      <h2>日本再起動（REBOOT）プラン</h2>
+      <p>最低賃金を時給2,000円に引き上げ、累進課税を廃止してフラット税に。生活保護・障害者支援・失業給付・年金を再設計し、「頑張る人が100%報われる社会」を実現するための財源試算（移行初年度▲3兆円→3年後+3〜5兆円）を提示します。</p>
+      <div class="tags">
+        <span class="tag">最低賃金</span>
+        <span class="tag">税制改革</span>
+        <span class="tag">社会保障</span>
+        <span class="tag">財源試算</span>
+      </div>
+      <span class="arrow">提言を見る・コメントする →</span>
+    </a>
+
+    <a class="proposal-card" href="proposal_002.html">
+      <p class="num">提言 #002</p>
+      <h2>地域経営型・公務員制度改革プラン</h2>
+      <p>都道府県職員の給与を地域の民間平均に、市町村職員は「85%スタート＋下剋上ルール」で連動させます。職種による特別扱いの廃止、「任期10年制」、退職金に代わる成功報酬（最大1,200万円）により、毎年約8.7兆円の財源を生み出します。高校生向けの解説スライド（全19枚）付き。</p>
+      <div class="tags">
+        <span class="tag">公務員制度</span>
+        <span class="tag">給与改革</span>
+        <span class="tag">任期10年制</span>
+        <span class="tag">財政効果</span>
+      </div>
+      <span class="arrow">提言を見る・コメントする →</span>
+    </a>
+
+    <div class="upcoming-card">
+      <p class="num">次の提言</p>
+      <h2>提言 #003（準備中）</h2>
+      <p>他のテーマの提言も今後追加予定です。提言001・002へのコメントもお待ちしています。</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="index.html">← トップへ戻る</a></span>
+</footer>
+</body>
+</html>
