@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REBOOT JAPAN ── 日本再起動 政策提言プラットフォーム</title>
+  <title>REBOOT JAPAN ── 市民による政策提言プラットフォーム</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,6 +16,7 @@
       --gray-mid: #2e2e2e;
       --gray-light: #888;
       --border: #2e2e2e;
+      --panel-width: 360px;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -44,6 +45,8 @@
       font-weight: 900;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
     }
     .logo span { color: var(--red); }
     .main-nav { display: flex; gap: 1.5rem; }
@@ -86,13 +89,13 @@
     }
     .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
 
-    /* PROPOSALS SECTION */
-    .proposals-section {
+    /* PROPOSALS LIST */
+    .proposals-container {
       max-width: 860px;
       margin: 0 auto;
       padding: 3rem 3rem 5rem;
     }
-    .section-label {
+    .proposals-label {
       font-size: 0.72rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
@@ -101,46 +104,69 @@
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border);
     }
-    .proposals-grid {
+    .proposal-list {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 0;
     }
-    .proposal-card {
-      display: block;
-      background: var(--gray);
-      border: 1px solid var(--border);
-      padding: 1.5rem 1.75rem;
+    .proposal-item {
+      display: grid;
+      grid-template-columns: 5rem 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
       text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
+      color: inherit;
+      transition: background 0.15s;
     }
-    .proposal-card:hover { border-color: var(--red); background: #1f1f1f; }
-    .proposal-card .num {
-      color: var(--red);
+    .proposal-item:first-child { border-top: 1px solid var(--border); }
+    .proposal-item:hover { background: var(--gray); padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem; }
+    .proposal-num {
       font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .proposal-card h3 {
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: 900;
-      margin-bottom: 0.6rem;
-    }
-    .proposal-card p {
-      color: var(--gray-light);
-      font-size: 0.9rem;
-    }
-    .view-all {
-      display: inline-block;
-      margin-top: 1.5rem;
+      letter-spacing: 0.2em;
       color: var(--red);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
     }
-    .view-all:hover { text-decoration: underline; }
+    .proposal-body {}
+    .proposal-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .proposal-desc {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    .proposal-arrow {
+      font-size: 1.2rem;
+      color: var(--gray-mid);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .proposal-item:hover .proposal-arrow {
+      color: var(--red);
+      transform: translateX(4px);
+    }
+    .proposal-item.coming-soon {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+    .proposal-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+    .proposal-badge.new { background: var(--red); color: var(--white); }
+    .proposal-badge.soon { background: var(--gray-mid); color: var(--gray-light); }
 
     /* FOOTER */
     footer {
@@ -154,8 +180,9 @@
     }
 
     @media (max-width: 600px) {
-      .hero, .proposals-section { padding: 2.5rem 1rem; }
+      .hero, .proposals-container { padding: 2.5rem 1rem; }
       header { padding: 1rem; }
+      .proposal-item { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; }
     }
   </style>
 </head>
@@ -163,7 +190,7 @@
 
 <header>
   <div class="header-left">
-    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <a href="index.html" class="logo">REBOOT <span>JAPAN</span></a>
     <nav class="main-nav">
       <a href="index.html" class="active">トップ</a>
       <a href="proposals.html">提言一覧</a>
@@ -179,24 +206,51 @@
     <p class="hero-meta">市民による・市民のための・政策議論の場</p>
   </section>
 
-  <div class="proposals-section">
-    <p class="section-label">最新の提言</p>
-    <div class="proposals-grid">
-      <a class="proposal-card" href="japan_reboot.html">
-        <p class="num">提言 #001</p>
-        <h3>日本再起動（REBOOT）プラン</h3>
-        <p>最低賃金・税制・社会保障を一体改革し、「頑張る人が100%報われる社会」を作るための財源試算と制度設計。</p>
+  <div class="proposals-container">
+    <p class="proposals-label">提言一覧</p>
+    <div class="proposal-list">
+
+      <a class="proposal-item" href="japan_reboot.html">
+        <div class="proposal-num">#001</div>
+        <div class="proposal-body">
+          <div class="proposal-title">日本再起動（REBOOT）プラン</div>
+          <div class="proposal-desc">最低賃金・税制・社会保障・失業給付を一体改革。頑張る人が100%報われる社会へ。</div>
+        </div>
+        <div class="proposal-arrow">→</div>
       </a>
-      <a class="proposal-card" href="proposal_002.html">
-        <p class="num">提言 #002</p>
-        <h3>地域経営型・公務員制度改革プラン</h3>
-        <p>都道府県・市町村の職員の給与を地域の民間実態に連動させ、「任期10年制」と成功報酬で自治体を「稼げる組織」へ変える。</p>
+
+      <a class="proposal-item" href="proposal_002.html">
+        <div class="proposal-num">#002</div>
+        <div class="proposal-body">
+          <div class="proposal-title">地域経営型・公務員制度改革プラン</div>
+          <div class="proposal-desc">公務員給与を民間実態に連動させ、任期10年制と成功報酬で地方自治体を「稼げる組織」へ変える。</div>
+        </div>
+        <div class="proposal-arrow">→</div>
       </a>
+
+      <a class="proposal-item" href="japan_reboot_003.html">
+        <div class="proposal-num">#003</div>
+        <div class="proposal-body">
+          <div class="proposal-title">BtoB下請け産業の構造再編と成長ドライブ施策<span class="proposal-badge new">NEW</span></div>
+          <div class="proposal-desc">無条件の優遇税制と延命補助金が固定してきた「負のループ」を断ち切る。零細を減らし、強い中堅企業を育てる産業大手術。</div>
+        </div>
+        <div class="proposal-arrow">→</div>
+      </a>
+
+      <div class="proposal-item coming-soon">
+        <div class="proposal-num">#004</div>
+        <div class="proposal-body">
+          <div class="proposal-title">次の提言<span class="proposal-badge soon">COMING SOON</span></div>
+          <div class="proposal-desc">準備中</div>
+        </div>
+        <div class="proposal-arrow">→</div>
+      </div>
+
     </div>
-    <a class="view-all" href="proposals.html">すべての提言を見る →</a>
   </div>
 </main>
 
 <footer>REBOOT JAPAN ── 市民による政策提言プラットフォーム</footer>
+
 </body>
 </html>
