@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言004：相続税の不条理是正 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f0;
+      --red: #d62828;
+      --red-dark: #a01f1f;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --gray-light: #888;
+      --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 200;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a {
+      color: var(--gray-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+
+    /* LAYOUT */
+    .layout {
+      display: flex;
+      transition: margin-right 0.3s ease;
+    }
+    .layout.panel-open { margin-right: var(--panel-width); }
+
+    /* MAIN */
+    main { flex: 1; min-width: 0; }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 3rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 580px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+
+    /* PLAN CONTAINER */
+    .plan-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+    }
+    .plan-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ACTIONS */
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+
+    /* SLIDE EMBED */
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+    .slide-frame-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 59.27%;
+      background: var(--gray);
+      border: 1px solid var(--border);
+    }
+    .slide-frame-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .btn-link {
+      text-decoration: none;
+      display: inline-block;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.3rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* PLAN CONTENT */
+    .plan-content h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      margin: 2.75rem 0 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-content > h2:first-child,
+    .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      margin: 1.75rem 0 0.75rem;
+    }
+    .plan-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 1.25rem 0 0.5rem;
+    }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content li > ul, .plan-content li > ol { margin-top: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      color: #ddd;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .plan-content code { font-family: 'Courier New', monospace; }
+
+    /* COMMENT PANEL */
+    .comment-panel {
+      position: fixed;
+      top: 0;
+      right: calc(-1 * var(--panel-width));
+      width: var(--panel-width);
+      height: 100vh;
+      background: var(--gray);
+      border-left: 1px solid var(--border);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      overflow: hidden;
+    }
+    .comment-panel.open { right: 0; }
+    .panel-header {
+      padding: 1.25rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      margin-top: 60px;
+    }
+    .panel-header h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .panel-close {
+      background: none;
+      border: none;
+      color: var(--gray-light);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 0.2rem;
+      transition: color 0.2s;
+    }
+    .panel-close:hover { color: var(--white); }
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .comment-form {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .comment-form-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 0.2rem;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.6rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .comment-form input:focus,
+    .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder,
+    .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+    }
+    .comment-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn {
+      background: none;
+      border: none;
+      color: var(--red);
+      font-size: 0.72rem;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      padding: 0;
+      letter-spacing: 0.05em;
+    }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.5rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      min-height: 60px;
+      resize: vertical;
+      width: 100%;
+    }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies {
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .reply-item { }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #bbb; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+
+    /* FOOTER */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+      color: var(--gray-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言004</p>
+      <h1>相続税の<em>不条理</em>を正す</h1>
+      <p class="hero-desc">相続税はそもそも「なくてもいい税」。それでも残すなら、対象はごく一部の超富裕層に限定し、税率も敬意ある水準に。中産階級を完全に解放し、事業承継への課税という最大の矛盾も正す改革案です。</p>
+      <p class="hero-meta">相続税の不条理是正 ── 中産階級を解放し、超富裕層には敬意ある税率を</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #004 ── 相続税の不条理是正</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="proposal_004.pptx" download>スライド（PowerPoint・全23枚）をダウンロード</a>
+        <a class="btn-link outline" href="proposal_004.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全23枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSlJmq-jyjdVDzwqkXnx7dkd8MWe8TmszbqPc_PJoStuUrtYfwTylnsfwcgNAWzRQ/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 本提言の立ち位置</h2>
+<p>本提言は、<strong>相続税という税制そのものへの懐疑</strong>から出発する。</p>
+<pre><code>そもそも相続税は「なくてもいい税」である。
+それでも残すのであれば、対象はごく一部の超富裕層に限定し、
+税率も「敬意ある水準」にとどめるべきだ。</code></pre>
+<p>これは提言001の「フラット税・累進課税への不信」、提言003の「成長した会社を全力で支援する」という思想と地続きである。特に事業承継への課税は、会社の所有権が移転するだけで現金が動かないにもかかわらず重い税負担が生じるという点で、提言003の「強い中堅企業を育てる」方向性と真っ向から矛盾している。</p>
+<hr>
+<h2>1. 現行の相続税が抱える「不条理」</h2>
+<h3>① 中産階級が課税対象に巻き込まれる</h3>
+<p>現行の基礎控除額（3,000万円＋600万円×法定相続人数）は、東京の一等地などに家を持っているだけでボーダーを超えてしまう水準である。生涯真面目に働き、家と退職金を築いただけの層が、相続税の課税対象になっている。</p>
+<h3>② 生活基盤の破壊</h3>
+<p>「住んでいる実家を売却して納税する」という、相続税のために生活の場そのものを失うという本末転倒な事態が起きている。</p>
+<h3>③ 最高税率55%は「資産整理しないと払えない」水準</h3>
+<p>現行の相続税の最高税率は55%。資産の半分以上を失うという負担は、不動産・自社株式など現金化しにくい資産を多く持つ層にとって、資産の大部分を整理しなければ納税できないレベルである。これはどれだけ資産を築いた人に対しても、行き過ぎた負担と言える。</p>
+<h3>④ 事業承継への課税は本質的に不合理</h3>
+<p>会社のオーナーが亡くなり、子や孫が経営を引き継ぐ場合、自社株式の評価額に対して相続税がかかる。しかし、株式の評価額が高くても、相続人の手元に現金が入るわけではない。会社の所有権が移るだけである。結果として、<strong>納税のために自社株を売却する・会社を解散する・銀行から借金して納税する</strong>という、事業の存続そのものを脅かす事態が生まれている。</p>
+<h4>現行「事業承継税制（特例措置）」の限界</h4>
+<p>現在も自社株式の相続税・贈与税を100%納税猶予する制度（事業承継税制・特例措置）は存在するが、以下の構造的な弱点を抱えている。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>猶予であって免除ではない</td><td>次の後継者へ承継するまでは「猶予」状態が続く</td></tr>
+<tr><td>時限措置</td><td>特例承継計画の提出期限は令和9年9月末まで。令和7年度与党税制改正大綱で「今後とも延長されない」と明言されている</td></tr>
+<tr><td>重い継続要件</td><td>申告期限から5年間は代表者として経営を続ける等の要件が必要</td></tr>
+<tr><td>取り消し時のリスク</td><td>認定取り消しの場合、猶予されていた税額全額に加え、利子税（10年で約4%上乗せ）が一括課税される</td></tr>
+<tr><td>手続きコスト</td><td>都道府県への申請、税理士等の認定支援機関による指導が必須。年間20〜50万円程度のランニングコストが発生</td></tr>
+</tbody>
+</table>
+<p>つまり現行制度は「使えなくはないが、複雑で不安定、しかも消える運命にある」制度であり、中小企業の事業承継のハードルになっている。</p>
+<hr>
+<h2>2. データで見る実態</h2>
+<h3>相続税の課税割合（令和5年・国税庁）</h3>
+<ul>
+<li>死亡者数に対する相続税の課税割合：<strong>9.9%</strong>（約10人に1人）</li>
+<li>課税価格2億円以下の被相続人の割合：約89.3%</li>
+<li>課税価格3億円以下：約94.6%</li>
+<li>課税価格5億円超の申告件数：4,180件（年間死亡者数の<strong>約2.2%</strong>）</li>
+</ul>
+<p>つまり、課税される人の中でも「5億円を超える」層はごく一部であり、10億円を超える層となるとさらに限られる。本提言が「10億円ボーダー」を設定しても、対象になるのは現在課税されている層のごく一部、年間死亡者全体で見ればわずかな割合にとどまる。</p>
+<h3>相続税収の規模</h3>
+<ul>
+<li>令和7年度・相続税収（贈与税含む）：約1兆7,610億円</li>
+<li>国税収入全体（約75兆円規模）における相続税の比重：数%程度の小さな税目</li>
+</ul>
+<p>本提言は、相続税収の減少を前提とした設計である。相続税はもともと国税収入の中でわずかな比重しか占めておらず、それによって中産階級の生活基盤が破壊されるコストの方が大きいと考える。</p>
+<h3>海外逃避リスクについての確認</h3>
+<p>「税率を引き下げれば富裕層の海外流出を防げる」という主張は、慎重に扱う必要がある。現行制度にはすでに以下の防波堤が存在する。</p>
+<ul>
+<li><strong>国外転出時課税制度（出国税）</strong>：1億円以上の有価証券等を保有する人が海外移住する場合、含み益にみなし譲渡課税</li>
+<li><strong>10年ルール</strong>：被相続人・相続人ともに海外移住後10年経過しないと、海外資産は日本の相続税から逃れられない（2017年改正で5年→10年に強化済み）。日本国内にある不動産・預金は居住地に関係なく課税対象</li>
+</ul>
+<p>つまり、税率を55%から30%に下げることが海外逃避防止の決定打になるとは言えない。本提言における30%への引き下げの主目的は、海外逃避防止ではなく、<strong>「資産規模に関わらずフラットな税率を志向する」という哲学（提言001と同じ思想）</strong>に基づくものである。</p>
+<hr>
+<h2>3. 新しい相続税の設計</h2>
+<h3>① 事業承継（自社株式・事業用資産）── 直系への承継は相続税ゼロ</h3>
+<ul>
+<li>対象：<strong>配偶者・子・孫</strong>への承継に限る（直系卑属＋配偶者）</li>
+<li>兄弟姉妹・祖父母など傍系の親族は対象外</li>
+<li>現行の事業承継税制が抱える「時限措置」「重い継続要件」「取り消し時の遡及課税リスク」「手続きコスト」を解消し、<strong>恒久的かつ無条件の非課税</strong>に置き換える</li>
+<li>後継者が安心して経営に専念できる、シンプルで予見可能性の高い制度を目指す</li>
+</ul>
+<h3>② それ以外の財産（現金・不動産・有価証券等）── 10億円ボーダー</h3>
+<pre><code>課税遺産額（事業承継対象を除く） ≦ 10億円 → 税額0円
+課税遺産額（事業承継対象を除く） &gt; 10億円 → （課税遺産額 − 10億円）× 30%</code></pre>
+<ul>
+<li>ボーダーは10億円（宝くじの前後賞を合わせた金額、というイメージで分かりやすく示す）</li>
+<li><strong>超過分にのみフラット30%課税</strong>（崖なし、累進なし）。5億円の人と10億円1円の人で税負担が急激に変わることはなく、超過累進のような「稼ぐほど税率が上がる」構造も採用しない</li>
+<li>中産階級・アッパーミドル層は完全に課税対象から外れる</li>
+</ul>
+<h3>③ 居住用財産のゼロ評価</h3>
+<ul>
+<li>被相続人の居住用財産（実家など）は、評価額を100%減額し、課税遺産額の計算に含めない</li>
+<li>適用条件：相続人が<strong>相続後10年間、居住を継続</strong>すること（月15日以上の滞在実績を基準とする）</li>
+<li>例外（要件免除）：<ul>
+<li>公的理由（立ち退き、区画整理、災害による滅失など）</li>
+<li>病的理由（介護施設入所、医療上の理由による転居など）</li>
+</ul>
+</li>
+<li>違反時：<strong>遡及課税＋10年分の利子相当額を追徴</strong>（節税スキーム対策。死亡直前に現金を不動産化し、相続直後に売却するような租税回避を防ぐ）</li>
+</ul>
+<hr>
+<h2>4. 財源についての考え方</h2>
+<p>本提言は、相続税収の減少を前提に置く。</p>
+<ul>
+<li>現状の相続税収（約1.76兆円）は、国税収入全体（約75兆円）の中でわずかな比重にすぎない</li>
+<li>一方で、現行制度が中産階級の生活基盤（住んでいる家）を破壊し、強い中堅企業の事業承継を妨げているコストは、税収減少という数字以上に大きいと考える</li>
+<li>したがって本提言は、相続税収に依存しない財源設計を前提とする。具体的な代替財源は他の提言（提言001のフラット税・消費税等）の枠組みの中で確保する</li>
+</ul>
+<hr>
+<h2>5. 提言001・003との接続</h2>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>提言001（民間）</th>
+<th>提言003（企業）</th>
+<th>提言004（相続）</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>累進課税への姿勢</td><td>フラット税率を支持</td><td>法人税は条件達成でフラット化</td><td>累進課税を廃し、超過分のみフラット30%</td></tr>
+<tr><td>対象の絞り込み</td><td>全国民をフラット税で公平に</td><td>成長する会社だけを優遇</td><td>超富裕層のみを対象に限定</td></tr>
+<tr><td>中間層・中小企業の保護</td><td>中央値水準への収束</td><td>中小・零細企業の保護（BtoC除外等）</td><td>中産階級の完全解放、事業承継の保護</td></tr>
+</tbody>
+</table>
+<p>本提言は、「頑張って築いた資産・事業は、世代を超えてもきちんと守られるべきだ」という一貫した思想のもと、提言001・003と地続きの税制改革として位置づけられる。</p>
+<hr>
+<h2>6. 今後の検討課題</h2>
+<ul>
+<li>事業承継対象の「自社株式・事業用資産」の具体的な線引き（個人事業主の事業用資産の範囲、持株会社化した場合の扱い等）</li>
+<li>直系（配偶者・子・孫）以外の後継者（従業員承継・M&amp;A等）への対応をどう設計するか（提言003のM&amp;A無税化との連携可能性）</li>
+<li>10億円ボーダー・居住用財産ゼロ評価による具体的な税収減少額の試算</li>
+<li>居住用財産の「月15日以上」の確認方法（マイナンバー・住民票等の活用）</li>
+<li>海外資産・海外居住者が関わる相続への適用関係（現行の10年ルール・出国税との整合性）</li>
+</ul>
+<hr>
+<h2>結論：資産を築き、遺すことに、誇りを持てる社会へ</h2>
+<p>相続税は、本来「なくてもいい税」である。それでも残すのであれば、対象はごく一部の超富裕層に限り、税率も常識的な範囲にとどめるべきだ。</p>
+<p>中産階級が生涯かけて築いた家を、相続のために手放す必要はない。強い中堅企業が、創業者の死をきっかけに解体される必要もない。</p>
+<p><strong>一生懸命働き、事業を育て、資産を遺すこと。それが世代を超えて尊重される国こそが、次の世代に挑戦する勇気を与える。</strong></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- COMMENT PANEL -->
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  // パネル開閉
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+
+  // コメント管理（提言004専用ストレージキー）
+  let comments = JSON.parse(localStorage.getItem('rj_comments_004') || '[]');
+
+  function saveComments() {
+    localStorage.setItem('rj_comments_004', JSON.stringify(comments));
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments();
+    renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments();
+    renderComments();
+  }
+
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header">
+            <span class="reply-name">${r.name}</span>
+            <span class="reply-date">${formatDate(r.date)}</span>
+          </div>
+          <p class="reply-body">${r.body}</p>
+        </div>
+      `).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header">
+            <span class="comment-name">${c.name}</span>
+            <span class="comment-date">${formatDate(c.date)}</span>
+          </div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderComments();
+</script>
+</body>
+</html>
