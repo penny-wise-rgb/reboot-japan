@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言006：NHKの解体・分社化による受信料大幅引き下げと国家映像戦略への転換 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f0;
+      --red: #d62828;
+      --red-dark: #a01f1f;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --gray-light: #888;
+      --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 200;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a {
+      color: var(--gray-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+
+    /* LAYOUT */
+    .layout {
+      display: flex;
+      transition: margin-right 0.3s ease;
+    }
+    .layout.panel-open { margin-right: var(--panel-width); }
+
+    /* MAIN */
+    main { flex: 1; min-width: 0; }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 3rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 580px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+
+    /* PLAN CONTAINER */
+    .plan-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+    }
+    .plan-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ACTIONS */
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+
+    /* SLIDE EMBED */
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+    .slide-frame-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 59.27%;
+      background: var(--gray);
+      border: 1px solid var(--border);
+    }
+    .slide-frame-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .btn-link {
+      text-decoration: none;
+      display: inline-block;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.3rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* PLAN CONTENT */
+    .plan-content h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      margin: 2.75rem 0 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-content > h2:first-child,
+    .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      margin: 1.75rem 0 0.75rem;
+    }
+    .plan-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 1.25rem 0 0.5rem;
+    }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content li > ul, .plan-content li > ol { margin-top: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      color: #f5f5f0;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .plan-content code { font-family: 'Courier New', monospace; }
+
+    /* COMMENT PANEL */
+    .comment-panel {
+      position: fixed;
+      top: 0;
+      right: calc(-1 * var(--panel-width));
+      width: var(--panel-width);
+      height: 100vh;
+      background: var(--gray);
+      border-left: 1px solid var(--border);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      overflow: hidden;
+    }
+    .comment-panel.open { right: 0; }
+    .panel-header {
+      padding: 1.25rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      margin-top: 60px;
+    }
+    .panel-header h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .panel-close {
+      background: none;
+      border: none;
+      color: var(--gray-light);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 0.2rem;
+      transition: color 0.2s;
+    }
+    .panel-close:hover { color: var(--white); }
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .comment-form {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .comment-form-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 0.2rem;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.6rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .comment-form input:focus,
+    .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder,
+    .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+    }
+    .comment-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn {
+      background: none;
+      border: none;
+      color: var(--red);
+      font-size: 0.72rem;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      padding: 0;
+      letter-spacing: 0.05em;
+    }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.5rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      min-height: 60px;
+      resize: vertical;
+      width: 100%;
+    }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies {
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+
+    /* FOOTER */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+      color: var(--gray-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言006</p>
+      <h1>受信料を、<br><em>3分の1</em>にする</h1>
+      <p class="hero-desc">NHKを純粋な報道・教育・災害インフラに再設計し、肥大化したエンタメ・高すぎる人件費・不透明な研究費・無駄な徴収業務を一気に解体する。</p>
+      <p class="hero-meta">NHKの解体・分社化による受信料大幅引き下げと国家映像戦略への転換</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #006 ── NHKの解体・分社化による受信料大幅引き下げと国家映像戦略への転換</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_006.pptx" download>スライド（PowerPoint・全17枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_006.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全17枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQI4VjCWc_S-1P73QqsBpqFivmijczMAODHuKIwoi_CCPGjfEbNKskYXhLeI2v5OA/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 問題意識</h2>
+<p>現在のNHKは「法的義務」を盾に、国民から集めた高額な受信料であぐらをかいている。肥大化した組織、年功序列で平均1,100万円に達する職員給与、不透明な研究開発費、そして義務があるにもかかわらず徴収業務に年500億円超を費やす構造的な矛盾。これらはいずれも、競争にさらされていない組織が必然的に辿り着く末路である。</p>
+<p>Netflixが月額890円で世界規模のコンテンツを提供し、民間放送局が広告収入だけで運営を続けている。法的義務に守られた公共放送が持つべきは、その義務に見合ったコスト意識と、義務に見合った業務範囲だけである。</p>
+<p>本提言は、NHKを純粋な報道・教育・災害インフラに徹底的にスクラップ＆ビルドし、受信料を現在の約3分の1（<strong>月額600円</strong>）まで引き下げることを提言する。</p>
+<hr>
+<h2>1. 現状の数字</h2>
+<table>
+<thead>
+<tr><th>項目</th><th>現状</th></tr>
+</thead>
+<tbody>
+<tr><td>受信料収入（年間）</td><td>約5,900億円</td></tr>
+<tr><td>職員平均給与</td><td>約1,100万円</td></tr>
+<tr><td>営業・徴収コスト</td><td>約500〜600億円／年</td></tr>
+<tr><td>技研（放送技術研究所）予算</td><td>約250〜280億円／年</td></tr>
+<tr><td>受信料・地上契約（2024年度）</td><td>月額1,225円</td></tr>
+<tr><td>受信料・衛星BS契約（2024年度）</td><td>月額2,034円</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>2. 改革の4つの柱</h2>
+<hr>
+<h3>柱① 組織の分社化とNHK本体の公共特化</h3>
+<p>民放と競うようなバラエティ番組、商業的なエンタメ、過剰なスポーツ放映権を完全廃止。NHK本体が担う業務を、国民全員が費用負担する根拠のある領域だけに絞り込む。</p>
+<h4>廃止する業務</h4>
+<ul>
+<li>バラエティ・クイズ・トーク・商業ドラマ</li>
+<li>民間代替可能なスポーツ中継</li>
+<li>NHKオンデマンドの商業的コンテンツ</li>
+<li>過剰な国際展開（NHKワールドの一部）</li>
+</ul>
+<h4>公共インフラとして存続する業務</h4>
+<ul>
+<li>国内・国際ニュース報道</li>
+<li>災害報道・緊急警報システム</li>
+<li>選挙特番・国会中継</li>
+<li>教育番組（Eテレの核心部分）</li>
+<li>気象情報の公共放送</li>
+</ul>
+<h4>文化的価値として維持するコンテンツ（2つのみ）</h4>
+<table>
+<thead>
+<tr><th>コンテンツ</th><th>維持の根拠</th><th>条件</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>紅白歌合戦</strong></td><td>日本の音楽文化・歴史の継承</td><td>「純国産」構成に原点回帰。視聴率・海外タレント依存の演出を廃止し、制作費を大幅削減</td></tr>
+<tr><td><strong>大河ドラマ</strong></td><td>歴史教育・文化的アーカイブとしての公共性</td><td>教育的観点を軸に制作規模を適正化</td></tr>
+</tbody>
+</table>
+<p>廃止されたエンタメ部門は分社化または民間への売却・移管とし、NHK本体の予算から完全に切り離す。</p>
+<hr>
+<h3>柱② 人件費を「テレビ業界の中央値」へ連動・適正化</h3>
+<p>年功序列で自動的に平均1,100万円に達する給与体系を廃止する。地方の小規模テレビ局（山口・青森・岩手等）で働く人々を含む、日本全国のテレビ業界全体の中央値（約700〜750万円）とNHK職員の平均給与が完全に一致するよう、<strong>放送法または省令で上限を義務化</strong>する。</p>
+<pre><code>NHK職員の平均給与 = 全国テレビ業界の全職種平均給与（中央値）
+                   ≈ 約700万〜750万円</code></pre>
+<p>毎年の厚生労働省「賃金構造基本統計調査」の放送業区分データに自動連動させ、裁量の入る余地をなくす。</p>
+<ul>
+<li>現行平均1,100万円 → 目標700〜750万円</li>
+<li>分社化・自然減による段階的実施</li>
+<li><strong>削減効果：約350〜450億円／年</strong></li>
+</ul>
+<hr>
+<h3>柱③ 技研（放送技術研究所）の廃止と国立大学への完全移管</h3>
+<p>NHK放送技術研究所は、年間約250〜280億円の受信料を投じて次世代映像技術・空間コンピューティング・AIアーカイブ等を研究しているが、その成果はNHK内部に囲い込まれ、民間放送局や配信事業者には開放されない。</p>
+<p>「国民全員が負担する受信料」で生まれた技術が、民間に非公開である。この構造は根本的に正当化できない。</p>
+<table>
+<thead>
+<tr><th>移管先</th><th>対象領域</th><th>財源</th></tr>
+</thead>
+<tbody>
+<tr><td>トップ国立大学3〜4校</td><td>次世代映像技術・空間コンピューティング・AI映像処理</td><td>科学技術振興費（国費）＋大学運営費</td></tr>
+</tbody>
+</table>
+<p>移管後の研究成果は、日本のすべての民間放送局・配信事業者・クリエイターへ<strong>オープンライセンスで提供</strong>する。NHKが囲い込んでいた技術インフラを解放することで、日本のコンテンツ産業全体がNetflixや海外メディアと対等に戦えるプラットフォームを国主導で整備する。</p>
+<ul>
+<li><strong>削減効果：約250億円</strong>（受信料からの支出がゼロになる。国費への付け替えは科学技術予算の組み替えで対応）</li>
+</ul>
+<hr>
+<h3>柱④ 営業費の完全撤廃と「インフラ決済」による一括徴収</h3>
+<p>法的義務として支払い義務が存在するにもかかわらず、NHKは年間500〜600億円を督促・訪問・郵送・コールセンター・委託業者に費やしている。気象庁・消防庁・国立国会図書館は「義務だから徴収業務に予算をかける」という発想を持たない。NHKだけが例外である理由はない。</p>
+<pre><code>Option A：電気料金への上乗せ（既存インフラ活用）
+Option B：マイナンバー紐づけによる住民税・社会保険料との一元徴収</code></pre>
+<p>どちらも、NHK独自の徴収業務はゼロになる。</p>
+<p>現行の「住居単位の契約」を廃止し、1世帯＝1つの「デジタル公共アカウント」へ一本化する。単身赴任・学生の別居・セカンドハウス等での二重払いを撤廃し、スマートフォン・PCでの視聴も追加料金なしで同一アカウントから利用できる。</p>
+<ul>
+<li><strong>削減効果：約500億円</strong></li>
+</ul>
+<hr>
+<h2>3. 財政削減効果と新料金シミュレーション</h2>
+<h3>削減項目の内訳</h3>
+<table>
+<thead>
+<tr><th>削減項目</th><th>削減額</th></tr>
+</thead>
+<tbody>
+<tr><td>営業・徴収費の完全廃止</td><td>▲500億円</td></tr>
+<tr><td>人件費の業界中央値連動</td><td>▲450億円</td></tr>
+<tr><td>番組制作費の公共特化（エンタメ・スポーツ廃止）</td><td>▲1,300億円</td></tr>
+<tr><td>技研の大学移管</td><td>▲250億円</td></tr>
+<tr><td><strong>削減総額</strong></td><td><strong>▲約2,500億円</strong></td></tr>
+</tbody>
+</table>
+<h3>新料金の試算</h3>
+<pre><code>現行受信料収入   約5,900億円
+削減総額        ▲約2,500億円
+─────────────────────────────
+必要維持費       約3,400億円</code></pre>
+<p>衛星契約（BS）の区分を廃止して「一律ワンプラン」に統合し、全世帯を単一の料金体系に集約する。</p>
+<table>
+<thead>
+<tr><th>項目</th><th>現行</th><th>改革後</th></tr>
+</thead>
+<tbody>
+<tr><td>地上契約</td><td>月額 1,225円</td><td><strong>月額 600円（一律）</strong></td></tr>
+<tr><td>衛星契約（BS）</td><td>月額 2,034円</td><td><strong>廃止・統合</strong></td></tr>
+<tr><td>年額換算</td><td>14,700〜24,408円</td><td><strong>年額 7,200円</strong></td></tr>
+<tr><td>契約単位</td><td>住居単位</td><td>世帯アカウント単位</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>4. 「国費化」の大義名分：なぜ今なら可能か</h2>
+<p>これまで受信料の「税連動徴収・国費化」は、一つの懸念によって繰り返し阻まれてきた。</p>
+<blockquote style="border-left:3px solid #d62828;padding-left:1rem;margin:1rem 0;color:#f5f5f0;font-style:normal;">「時の政権が予算を握ることで、報道の独立性が損なわれる」</blockquote>
+<p>この懸念は正当である。国営放送化は報道の自由の観点から絶対に避けなければならない。しかし、本提言が設計するNHKは構造的に異なる。</p>
+<pre><code>現在のNHK：エンタメ・スポーツ・研究・商業サービスを抱えた「巨大メディア企業」
+               ↓
+提言006後のNHK：ニュース・災害・教育に特化した「報道インフラ」</code></pre>
+<p>純粋な報道・災害インフラに特化したNHKは、気象庁・消防庁・国立国会図書館と同じカテゴリに属する。これらの機関は国費で運営されているが、「政権が内容を支配している」とは誰も言わない。<strong>インフラの維持費と、報道内容の編集権は、切り離せる</strong>からである。</p>
+<p>本提言が求めるのは「NHKを政府の広報機関にせよ」ではない。「肥大化したエンタメ部門を切り離した上で、残った純粋な報道インフラの<strong>維持費</strong>を、受信料という非効率な私的徴収から、税という効率的な公的調達へ移行せよ」である。</p>
+<p><strong>スリム化して初めて、国費化の大義名分が立つ。この順序が本提言の核心である。</strong></p>
+<hr>
+<h2>5. 前提条件・今後の検討課題</h2>
+<ul>
+<li>分社化された「エンタメNHK」の株式・資産の帰属と処分方法</li>
+<li>技研の人材・知的財産（特許等）の大学移管における法的整理</li>
+<li>電気料金上乗せ vs マイナンバー一元徴収の選択における公平性の検証</li>
+<li>「デジタル公共アカウント」の設計・セキュリティ・運用主体</li>
+<li>受信料廃止後の放送法改正における「編集権の独立」の明文化</li>
+<li>BS廃止統合に伴う衛星帯域の利用・返還ルール</li>
+<li>移行期間（既存職員・契約・番組の段階的整理）の設計</li>
+</ul>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- COMMENT PANEL -->
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+
+  let comments = JSON.parse(localStorage.getItem('rj_comments_006') || '[]');
+
+  function saveComments() {
+    localStorage.setItem('rj_comments_006', JSON.stringify(comments));
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments();
+    renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments();
+    renderComments();
+  }
+
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header">
+            <span class="reply-name">${r.name}</span>
+            <span class="reply-date">${formatDate(r.date)}</span>
+          </div>
+          <p class="reply-body">${r.body}</p>
+        </div>
+      `).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header">
+            <span class="comment-name">${c.name}</span>
+            <span class="comment-date">${formatDate(c.date)}</span>
+          </div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderComments();
+</script>
+</body>
+</html>
