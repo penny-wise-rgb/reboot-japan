@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言007：教育・雇用一体型システム「21歳社会人スタート」への構造改革 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f0;
+      --red: #d62828;
+      --red-dark: #a01f1f;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --gray-light: #888;
+      --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 200;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a {
+      color: var(--gray-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+
+    /* LAYOUT */
+    .layout {
+      display: flex;
+      transition: margin-right 0.3s ease;
+    }
+    .layout.panel-open { margin-right: var(--panel-width); }
+
+    /* MAIN */
+    main { flex: 1; min-width: 0; }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 3rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 580px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+
+    /* PLAN CONTAINER */
+    .plan-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+    }
+    .plan-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ACTIONS */
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+
+    /* SLIDE EMBED */
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+    .slide-frame-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 59.27%;
+      background: var(--gray);
+      border: 1px solid var(--border);
+    }
+    .slide-frame-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .btn-link {
+      text-decoration: none;
+      display: inline-block;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.3rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* PLAN CONTENT */
+    .plan-content h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      margin: 2.75rem 0 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-content > h2:first-child,
+    .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      margin: 1.75rem 0 0.75rem;
+    }
+    .plan-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 1.25rem 0 0.5rem;
+    }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content li > ul, .plan-content li > ol { margin-top: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      color: var(--white);
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    .plan-content code { font-family: 'Courier New', monospace; }
+    .plan-content blockquote {
+      border-left: 3px solid var(--red);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    /* COMMENT PANEL */
+    .comment-panel {
+      position: fixed;
+      top: 0;
+      right: calc(-1 * var(--panel-width));
+      width: var(--panel-width);
+      height: 100vh;
+      background: var(--gray);
+      border-left: 1px solid var(--border);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s ease;
+      overflow: hidden;
+    }
+    .comment-panel.open { right: 0; }
+    .panel-header {
+      padding: 1.25rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      margin-top: 60px;
+    }
+    .panel-header h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .panel-close {
+      background: none;
+      border: none;
+      color: var(--gray-light);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 0.2rem;
+      transition: color 0.2s;
+    }
+    .panel-close:hover { color: var(--white); }
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .comment-form {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .comment-form-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 0.2rem;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.6rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+    .comment-form input:focus,
+    .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder,
+    .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item {
+      background: var(--black);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+    }
+    .comment-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn {
+      background: none;
+      border: none;
+      color: var(--red);
+      font-size: 0.72rem;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      padding: 0;
+      letter-spacing: 0.05em;
+    }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.5rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      min-height: 60px;
+      resize: vertical;
+      width: 100%;
+    }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies {
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+
+    /* FOOTER */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+      color: var(--gray-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言007</p>
+      <h1><em>18歳の偏差値</em>で<br>人生を決めない</h1>
+      <p class="hero-desc">「とりあえず大学」という強迫観念を解体する。高校3年間で教養を完結させ、18歳以降は3つのルートに完全分離。21歳で奨学金ゼロ・即戦力の社会人を標準にする国家戦略。</p>
+      <p class="hero-meta">教育・雇用一体型システム「21歳社会人スタート」への構造改革</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #007 ── 教育・雇用一体型システム「21歳社会人スタート」への構造改革</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_007.pptx" download>スライド（PowerPoint・全18枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_007.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全18枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQz7rC1jbZe-pVMpu-God-sa47t57cXNZRa7EXCGcUz_V5UM5RLe-4-y9Mp6Z4gfg/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 問題意識</h2>
+<p>現在、日本の大学は「18歳が周囲に流されて入るモラトリアムのぬるま湯」と化している。若者は自覚のない4年間のために巨額の奨学金債務を背負い、企業は「大卒の肩書き」だけを採用基準にし、社会全体が「とりあえず大学」という強迫観念に縛られている。</p>
+<p><strong>大学が教育機関ではなく、就職のための通過儀礼になっている。</strong></p>
+<p>本提言は、この構造を根本から解体する。18歳以降は本人の目的と適性に応じて3つのルートに完全分離し、個人の主体性と国家の労働生産性を最大化する国家戦略へと転換する。その前提として、高校教育そのものも抜本的に再設計する。</p>
+<hr>
+<h2>1. 高校教育の再設計（前提改革）</h2>
+<p>現行の高校は「大学受験のための詰め込み」に終始しており、社会に出るための準備機能を果たしていない。本提言では高校3年間の役割を学年ごとに明確に分離する。</p>
+<table>
+<thead>
+<tr><th>学年</th><th>内容</th><th>目的</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1年</strong></td><td>中学教育の延長・基礎教養の完成</td><td>全員が共通して持つべき土台を揃える</td></tr>
+<tr><td><strong>2年</strong></td><td>文理の壁を撤廃した自由選択（アカデミック教養系）</td><td>自分の興味・適性を探索する</td></tr>
+<tr><td><strong>3年</strong></td><td>社会リテラシー（税制・選挙・国会・セーフティネット制度等）</td><td>失敗を恐れず選択できる土台をつくる</td></tr>
+</tbody>
+</table>
+<h3>2年生の選択科目について</h3>
+<p>文理という人工的な分類を廃止し、数学・哲学・経済学入門・文学・生物学・心理学・歴史などのアカデミックな教養系科目から本人が自由に組み合わせを設計する。「将来の専門を決める」段階ではなく、<strong>「自分が何に興味があるかを発見する」段階</strong>として位置づける。料理・音楽・アートは高校の守備範囲外とし、独学・専門学校に委ねる。</p>
+<h3>3年生の社会リテラシーについて</h3>
+<p>18歳で人生の岐路に立たされる前に、社会の仕組みを正確に知ることが不可欠である。税制・選挙制度・社会保障・失業給付・セーフティネットの全体像を学ぶことで、<strong>「どのルートを選んでも、失敗しても、やり直せる」という事実を制度として理解させる</strong>。自覚なき選択ではなく、根拠のある選択を18歳にさせるための学年である。</p>
+<hr>
+<h2>2. 3つの進路ルート（トリプル・トラック）</h2>
+<hr>
+<h3>① マジョリティ・標準ルート ── 9割の一般職</h3>
+<table>
+<thead>
+<tr><th>項目</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>行程</td><td>高校3年 ＋ 専門学校2年 ＝ <strong>21歳社会人スタート</strong></td></tr>
+<tr><td>対象</td><td>一般職全般（IT・生成AI・高度技術・簿記・デザイン等）</td></tr>
+</tbody>
+</table>
+<p>ほとんどの職種は、大卒である必要がない。専門2年間で実務に直結するスキルを徹底的に叩き込み、21歳で即戦力として社会に出る。</p>
+<h4>セーフティネット（2段階）</h4>
+<ul>
+<li><strong>転科の自由</strong>：18歳時点で選んだ専門が合わない場合、1年目終了時点で別の専門コースへペナルティなしで転科・リセットできる</li>
+<li><strong>延長の自由</strong>：人間的な猶予が必要な場合は専門学校の延長（再入学等）を認める。さらに3年行けば24歳——現行の大卒と年齢は変わらない。しかしそれは「流された4年」ではなく「自ら選んだ猶予」であり、そこには自覚と責任が生まれる</li>
+</ul>
+<hr>
+<h3>② 国家戦略・特殊ルート ── 医療・公安・防衛職</h3>
+<table>
+<thead>
+<tr><th>項目</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>行程</td><td>高校3年 ＋ 現行の専門大学・大学院・大学校 ＝ 国家資格取得・任官後に社会人スタート</td></tr>
+<tr><td>対象</td><td>医師・薬剤師・高度看護師・警察・消防・自衛隊（防衛大学校等）</td></tr>
+</tbody>
+</table>
+<p>命の担保や国家安全保障に関わる職種に限り、18歳からダイレクトに専門高等教育機関への進学を維持・推奨する。</p>
+<pre><code>費用負担：基本は国費。専門学校程度の学費のみ自費負担。
+従事義務：卒業・任官後10年間（医療・公安・防衛ともに共通）。
+義務終了後：完全自由（民間・開業・海外等、一切の制限なし）。</code></pre>
+<hr>
+<h3>③ 天才・研究者ルート ── 上位数％のトップインテリジェンス</h3>
+<table>
+<thead>
+<tr><th>項目</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>行程</td><td>高校3年 ＋ 最高峰の研究型大学 ＝ 18歳直通研究ルート</td></tr>
+<tr><td>対象</td><td>数学・物理・文学・AIアルゴリズム等で突出した才能・成果を示した天才・秀才</td></tr>
+</tbody>
+</table>
+<p>高校卒業時点で突出した才能・成果を示した人材を<strong>国費で選抜</strong>し、<strong>完全無償</strong>で大学・大学院へ直行させる。親の経済力に関係なく、10代から最先端の研究に没頭できる環境を国が完全保障する。</p>
+<p>これにより大学の絶対数を激減させ、浮いた補助金（私学助成金等）をトップ研究機関の研究開発費へ全額投入する。「才能があれば家庭の経済力は関係ない」という原則を制度として実現する。</p>
+<hr>
+<h2>3. 大学制度の再設計</h2>
+<p>偏差値60を存続・転換の分岐点とする。</p>
+<table>
+<thead>
+<tr><th>フェーズ</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>転換対象の指定</strong></td><td>偏差値60未満の大学・学部を転換対象に指定</td></tr>
+<tr><td><strong>助成金削減</strong></td><td>年20%ずつ削減、5年目にゼロ</td></tr>
+<tr><td><strong>強制転換トリガー</strong></td><td>4・5年目に定員割れが発生した場合、専門学校への転換を強制</td></tr>
+<tr><td><strong>自然生存の余地</strong></td><td>助成金ゼロでも定員を満たせた大学は存続を認める</td></tr>
+</tbody>
+</table>
+<h3>偏差値60以上の大学：研究力競争へ</h3>
+<p>偏差値60以上の大学は一律存続を認める。ただし、国からの研究費は<strong>研究アウトプット（論文数・特許数・産学連携実績等）によって差をつける</strong>。</p>
+<pre><code>学生人気（偏差値・志願者数）→ 競争軸から除外
+研究力（論文・特許・実績） → 競争軸として機能させる</code></pre>
+<p>助成金ゼロ化と研究費の傾斜配分を組み合わせることで、大学は「人気取り」では生き残れなくなる。本物の研究力を持つ機関だけが国費の恩恵を受ける。市場原理を「研究力の向上」という正しい方向に向ける設計である。</p>
+<table>
+<thead>
+<tr><th>区分</th><th>役割</th><th>財源</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>トップ研究大学（大幅増強）</strong></td><td>世界と戦う研究拠点。ルート③選抜者と社会人リカレントの受け皿</td><td>国費（研究力連動）</td></tr>
+<tr><td><strong>専門大学・大学校（維持）</strong></td><td>国家資格・高度専門職の育成（ルート②）</td><td>国費（ルート②授業料補助）</td></tr>
+<tr><td><strong>転換専門学校</strong></td><td>ルート①（9割）の受け皿として機能</td><td>自費中心</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>4. 2つの社会インフラ改革</h2>
+<h3>改革① 奨学金問題の根本解決</h3>
+<p>「大卒の肩書きがないとまともな職に就けない」という強迫観念を社会から一掃する。標準ルート（ルート①）の人間は21歳で自立して稼ぎ始め、その後「学びたい」と思った時に自費や企業のバックアップで学べばよい。周りに合わせるためだけに無理して奨学金を借りる必要がなくなる。<strong>経済格差による教育格差という概念そのものが社会から消滅する。</strong></p>
+<h3>改革② 社会人の「必要駆動型」リカレント教育</h3>
+<pre><code>社会に出る → 現実の壁にぶつかる → 必要なスキルが明確になる
+    → 本人の主体的意志で大学（知の場）へ学びに行く</code></pre>
+<p>社会人が学び直しのために休学・進学しても、昇進・異動・経済面において一切の社会的デメリットを被らないよう法的に保護・推奨する。格上げ・純化された大学は「18歳の通過儀礼の場」ではなく、「本物の学びを求める者が来る場」として機能する。</p>
+<hr>
+<h2>5. キーメッセージ</h2>
+<blockquote>「18歳の偏差値」で人生が決まる国から、「何歳からでも主体的に自分をアップデートできる国」へ。</blockquote>
+<p>18歳時点の自覚なきぬるま湯と借金を社会から排除し、代わりに「実務スキル」と「挑戦の自由」を与える。これによって、日本の労働生産性と個人の幸福度は劇的に再起動される。</p>
+<hr>
+<h2>6. 前提条件・今後の検討課題</h2>
+<ul>
+<li>高校2年生の選択科目の設計（科目一覧・単位設計・教員確保）</li>
+<li>高校3年生の社会リテラシー科目の標準カリキュラム策定</li>
+<li>ルート③の選抜基準の設計（何をもって「突出した才能」と判定するか）</li>
+<li>専門学校の質担保・カリキュラム標準化（玉石混交の現状整理）</li>
+<li>「大卒」要件を課している採用慣行・資格制度の法的見直し</li>
+<li>リカレント教育時の所得保障（休職中の生活費・企業負担の設計）</li>
+<li>偏差値60の判定基準の固定化リスク（偏差値は相対値のため絶対基準として使う際の設計）</li>
+<li>ルート②の「専門学校程度の学費」の具体的な金額設定</li>
+<li>転換専門学校への移行における教職員の処遇設計</li>
+</ul>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- COMMENT PANEL -->
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+
+  let comments = JSON.parse(localStorage.getItem('rj_comments_007') || '[]');
+
+  function saveComments() {
+    localStorage.setItem('rj_comments_007', JSON.stringify(comments));
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments();
+    renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments();
+    renderComments();
+  }
+
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header">
+            <span class="reply-name">${r.name}</span>
+            <span class="reply-date">${formatDate(r.date)}</span>
+          </div>
+          <p class="reply-body">${r.body}</p>
+        </div>
+      `).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header">
+            <span class="comment-name">${c.name}</span>
+            <span class="comment-date">${formatDate(c.date)}</span>
+          </div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderComments();
+</script>
+</body>
+</html>
