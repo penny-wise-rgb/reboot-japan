@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言008：公費執行の「完全デジタル透明化」と多重下請け・利権構造の根絶 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f0;
+      --red: #d62828;
+      --red-dark: #a01f1f;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --gray-light: #888;
+      --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 200;
+    }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a { color: var(--gray-light); font-size: 0.8rem; letter-spacing: 0.05em; text-decoration: none; transition: color 0.2s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn {
+      background: var(--red); color: var(--white); border: none;
+      padding: 0.5rem 1.1rem; font-family: inherit; font-size: 0.8rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; white-space: nowrap;
+    }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+    .layout { display: flex; transition: margin-right 0.3s ease; }
+    .layout.panel-open { margin-right: var(--panel-width); }
+    main { flex: 1; min-width: 0; }
+    .hero { padding: 5rem 3rem 3rem; max-width: 860px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc { font-size: 1rem; color: var(--gray-light); max-width: 580px; margin-bottom: 1.5rem; }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+    .plan-container { max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
+    .plan-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .slide-frame-wrapper { position: relative; width: 100%; padding-top: 59.27%; background: var(--gray); border: 1px solid var(--border); }
+    .slide-frame-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .btn-link { text-decoration: none; display: inline-block; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.3rem; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+    .plan-content h2 { font-size: 1.4rem; font-weight: 900; color: var(--white); margin: 2.75rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .plan-content > h2:first-child, .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--red); margin: 1.75rem 0 0.75rem; }
+    .plan-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin: 1.25rem 0 0.5rem; }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content li > ul, .plan-content li > ol { margin-top: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre { background: var(--gray); border: 1px solid var(--border); padding: 1rem; overflow-x: auto; font-size: 0.82rem; color: var(--white); margin: 1rem 0; line-height: 1.5; }
+    .plan-content code { font-family: 'Courier New', monospace; }
+    .comment-panel { position: fixed; top: 0; right: calc(-1 * var(--panel-width)); width: var(--panel-width); height: 100vh; background: var(--gray); border-left: 1px solid var(--border); z-index: 150; display: flex; flex-direction: column; transition: right 0.3s ease; overflow: hidden; }
+    .comment-panel.open { right: 0; }
+    .panel-header { padding: 1.25rem 1.25rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; margin-top: 60px; }
+    .panel-header h2 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .panel-close { background: none; border: none; color: var(--gray-light); cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+    .panel-close:hover { color: var(--white); }
+    .panel-body { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .comment-form { background: var(--black); border: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .comment-form-title { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-light); margin-bottom: 0.2rem; }
+    .comment-form input, .comment-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.6rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical; }
+    .comment-form input:focus, .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder, .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn { background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.1rem; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item { background: var(--black); border: 1px solid var(--border); padding: 0.85rem 1rem; }
+    .comment-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn { background: none; border: none; color: var(--red); font-size: 0.72rem; font-family: inherit; cursor: pointer; margin-top: 0.4rem; padding: 0; letter-spacing: 0.05em; }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.5rem 0.7rem; font-family: inherit; font-size: 0.82rem; outline: none; min-height: 60px; resize: vertical; width: 100%; }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies { margin-top: 0.6rem; padding-left: 0.75rem; border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+    footer { max-width: 860px; margin: 0 auto; padding: 2rem 3rem; color: var(--gray-light); font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言008</p>
+      <h1>税金に、<br><em>1円の闇</em>も許さない</h1>
+      <p class="hero-desc">定額支給・領収書不要・多重下請けの中抜き。昭和型のアナログ運用と利権構造を、テクノロジーで根絶する。税金が1円でも動く全てのプロセスを自動統制・完全可視化する国家改革。</p>
+      <p class="hero-meta">公費執行の「完全デジタル透明化」と多重下請け・利権構造の根絶</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #008 ── 公費執行の「完全デジタル透明化」と多重下請け・利権構造の根絶</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_008.pptx" download>スライド（PowerPoint・全16枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_008.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全16枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTO9RjIk4wD8Whfwo4IbiqNqzlcCHekZZy69IEQqAjzqFkj87zqcKjS86kr0MdDpg/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 問題意識</h2>
+<p>定額支給、領収書不要、事後報告——これらはいずれも昭和型のアナログ運用であり、不正の温床である。カラ出張、不透明な経費、談合、天下り、多重下請けによる中抜き。税金を原資とした利権構造は、「制度の穴」ではなく「制度の設計ミス」によって生まれている。</p>
+<p>本提言は、税金が1円でも動く全てのプロセスをテクノロジーで自動統制・完全可視化する。国、地方自治体、外郭団体、そして公的資金を受け取る民間組織にいたるまで、例外を認めない。</p>
+<p><strong>「税金を使う者に、1円のブラックボックスも、不当な中抜きも許さない」</strong></p>
+<hr>
+<h2>1. 5つの基幹政策</h2>
+<hr>
+<h3>政策① 「公費執行DX」の義務化とアナログ精算の法的禁止</h3>
+<p>全ての政府機関・自治体・外郭団体に対し、国が指定する<strong>「共通公費管理クラウド」</strong>と<strong>「公務用コーポレートカード」</strong>の導入・利用を義務付ける。現金取り扱い・紙の領収書・定額支給・事後報告による精算を全廃し、決済データを改ざん不可能な形でシステムに直接連携させる。</p>
+<h4>「共通公費管理クラウド」の調達自体への自己適用</h4>
+<p>本提言の最大の逆説は、<strong>「透明化のためのシステム調達」が最大の不透明案件になるリスク</strong>である。この逆説を封じるため、4層の対策を同時に実施する。</p>
+<table>
+<thead><tr><th>レイヤー</th><th>対策</th></tr></thead>
+<tbody>
+<tr><td><strong>調達段階</strong></td><td>政策⑤のルールを自己適用。このシステム開発案件に下請け確定・直接見積もり・E2E決済を最初から適用する</td></tr>
+<tr><td><strong>技術設計</strong></td><td>仕様・コードを完全オープンソース化し、特定ベンダーへの依存を構造的に排除する</td></tr>
+<tr><td><strong>導入方法</strong></td><td>一から作らない。マネーフォワード・Suica法人カード等の既存民間サービスを組み合わせ、新規開発リスクを最小化する</td></tr>
+<tr><td><strong>運用監視</strong></td><td>公費デジタル監視委員会（独立第三者機関）がシステムの調達・運用・改修を常時監視する</td></tr>
+</tbody>
+</table>
+<hr>
+<h3>政策② システムによる「自動ガバナンス（統制）」の導入</h3>
+<p>出張予約や物品購入の際、役職や職務に応じた制限をシステム側に<strong>事前実装</strong>する。一般職のグリーン車・高級ホテルの自動ロック、特定業者バイネーム購入のアラート、予算上限超過の自動ブロック。人手によるチェックや「事後の言い訳」に頼る性善説ガバナンスを廃止し、不適切な公費支出そのものが<strong>「物理的に実行できない」</strong>仕組みを作る。</p>
+<hr>
+<h3>政策③ 公費執行データの「リアルタイム・オープンデータ化」</h3>
+<p>共通システムを通じて執行された全公費データを、原則として<strong>全てリアルタイムでWeb公開</strong>する。例外（捜査費・外交機密の一部）は法律で厳格に列挙し、拡大解釈を許さない。</p>
+<h4>内部統制システムと公開システムの分離設計</h4>
+<p>執行管理（内部統制）と情報公開（外部公開）はセキュリティ要件が根本的に異なるため、<strong>別設計とする</strong>。公開側に流れるのはマスキング・匿名化処理を経たデータのみ。内部の生データへのアクセスは厳格な権限管理のもとで監査目的に限定する。</p>
+<pre><code>【内部統制システム】  →  マスキング・匿名化処理  →  【公開システム】
+ 高セキュリティ・完全記録                           国民向けWeb公開</code></pre>
+<hr>
+<h3>政策④ 補助金・委託費の「エンドツーエンド（E2E）」追跡</h3>
+<p>国や自治体から民間企業・NPO・外郭団体へ流れる補助金・委託費についても、その使途を同じ共通システム上で管理・執行することを<strong>支給の絶対条件</strong>とする。中間搾取（中抜き）や目的外支出を完全にトラッキングし、税金を原資とした利権構造を根絶する。</p>
+<hr>
+<h3>政策⑤ 入札プロセスの透明化と「多重下請け構造」の法的解体</h3>
+<p>公共事業・政府案件の入札制度を根本から改革し、以下の4ルールを<strong>法的に義務付ける</strong>。</p>
+<h4>ルール1：入札時点での下請け業者の確定・開示</h4>
+<p>応札企業は、入札時点で実際に業務を担当する下請け業者をすべて開示・確定させる。事後の不透明な丸投げや孫請けへの再委託は一切禁止とする。</p>
+<h4>ルール2：下請け自身による直接見積もり</h4>
+<p>入札金額の内訳のうち、下請け業者が担当する部分については、<strong>下請け業者自身が作成した見積書</strong>をそのまま添付させる。元請け企業による一方的な買い叩きや不当なマージンの上乗せをシステム的に排除する。</p>
+<h4>ルール3：支払金額の透明化とE2E決済</h4>
+<p>確定した下請け業者へ支払われる金額はあらかじめ契約時に明示され、公費管理クラウドを通じて<strong>中抜きなしで直接支払われる仕組み（E2E決済）</strong>を構築する。</p>
+<h4>ルール4：架空下請け・名義貸しの禁止と入札資格即時停止</h4>
+<p>実務を行わない架空下請け・名義貸しを<strong>法的に明文禁止</strong>する。発覚した場合は元請け・当該業者ともに<strong>入札資格を即時停止</strong>する。「名前だけ登録して実務は別業者がやる」という抜け穴を制度上封じる。</p>
+<table>
+<thead><tr><th>現行の構造</th><th>改革後の構造</th></tr></thead>
+<tbody>
+<tr><td>元請け → 中間業者 → 下請け（金額不透明）</td><td>発注者 → 下請け（直接・金額固定）</td></tr>
+<tr><td>事後の丸投げ・孫請けが横行</td><td>入札時点で全業者・全金額を確定</td></tr>
+<tr><td>元請けが下請けを自由に買い叩く</td><td>下請け自身の見積書が契約に直結</td></tr>
+<tr><td>架空下請け・名義貸しが横行</td><td>発覚次第、入札資格を即時停止</td></tr>
+<tr><td>談合・天下りの温床</td><td>技術力のある末端業者に適正対価</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>2. 財政・生産性へのインパクト（推計）</h2>
+<p>以下の数値はいずれも<strong>推計であり、前提条件によって大きく変動する</strong>。特に多重下請け解体による削減効果は、「不当マージン率」の実態を裏付ける公的統計が存在しないため、3シナリオで示す。</p>
+<h3>多重下請け解体による中抜き排除（年間約25〜30兆円の公共調達市場を前提）</h3>
+<table>
+<thead><tr><th>シナリオ</th><th>不当マージン率の前提</th><th>削減効果</th></tr></thead>
+<tbody>
+<tr><td><strong>保守的試算</strong></td><td>3〜5%（会計検査院指摘事例等から保守的に推計）</td><td>約0.75兆〜1.5兆円</td></tr>
+<tr><td><strong>中央値試算</strong></td><td>5〜7%</td><td>約1.25兆〜2.1兆円</td></tr>
+<tr><td><strong>楽観的試算</strong></td><td>8〜10%（重層下請き実態調査等の上限値）</td><td>約2.0兆〜3.0兆円</td></tr>
+</tbody>
+</table>
+<h3>その他の削減効果</h3>
+<table>
+<thead><tr><th>項目</th><th>削減効果</th></tr></thead>
+<tbody>
+<tr><td>公費執行DXによる無駄の防止</td><td>約2,000億〜3,000億円</td></tr>
+<tr><td>事務コスト（人件費）の削減</td><td>約1,000億〜1,500億円相当</td></tr>
+</tbody>
+</table>
+<h3>シナリオ別合計</h3>
+<table>
+<thead><tr><th>シナリオ</th><th>合計削減効果</th></tr></thead>
+<tbody>
+<tr><td>保守的</td><td>約1.05兆〜2.1兆円</td></tr>
+<tr><td>楽観的</td><td>約2.3兆〜3.45兆円</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>3. 適用範囲</h2>
+<p><strong>「税金が1円でも動く組織・プロセス」はすべて対象</strong>とする。例外の拡大解釈を許さないよう、例外規定の定義自体も法律で厳格に列挙する。</p>
+<table>
+<thead><tr><th>対象</th><th>適用</th></tr></thead>
+<tbody>
+<tr><td>国の省庁・機関</td><td>✅ 全面適用</td></tr>
+<tr><td>都道府県・市区町村</td><td>✅ 全面適用</td></tr>
+<tr><td>外郭団体・第三セクター</td><td>✅ 全面適用</td></tr>
+<tr><td>補助金・委託費を受ける民間企業</td><td>✅ 公費受領分に適用</td></tr>
+<tr><td>NPO・公益法人（公費受領）</td><td>✅ 公費受領分に適用</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>4. 前提条件・今後の検討課題</h2>
+<ul>
+<li>共通クラウドの仕様策定・セキュリティ設計（OSS化の範囲と脆弱性管理）</li>
+<li>既存民間サービスとの連携仕様と調達プロセスの設計</li>
+<li>公費デジタル監視委員会の組織設計・独立性の担保・権限範囲</li>
+<li>内部統制・公開システムの分離設計の詳細（マスキング基準・匿名化手法）</li>
+<li>多重下請け解体に伴う既存の元請け・中間業者の激変緩和措置</li>
+<li>入札時点での下請け確定ルールと緊急工事・災害対応との整合性</li>
+<li>E2E決済における下請け業者の資金繰り（支払いサイト・前払い制度の設計）</li>
+<li>AIによる異常値検知の誤検知リスクと異議申し立て手続きの設計</li>
+<li>「不当マージン率」の実態把握に向けた統計整備（制度導入後の実績データ蓄積）</li>
+</ul>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+  let comments = JSON.parse(localStorage.getItem('rj_comments_008') || '[]');
+  function saveComments() { localStorage.setItem('rj_comments_008', JSON.stringify(comments)); }
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments(); renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments(); renderComments();
+  }
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header"><span class="reply-name">${r.name}</span><span class="reply-date">${formatDate(r.date)}</span></div>
+          <p class="reply-body">${r.body}</p>
+        </div>`).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header"><span class="comment-name">${c.name}</span><span class="comment-date">${formatDate(c.date)}</span></div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>`;
+    }).join('');
+  }
+  renderComments();
+</script>
+</body>
+</html>
