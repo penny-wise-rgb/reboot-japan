@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言010：土地・不動産の外国人・外国資本取得規制プラン ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a; --white: #f5f5f0; --red: #d62828; --red-dark: #a01f1f;
+      --gray: #1a1a1a; --gray-mid: #2e2e2e; --gray-light: #888; --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Noto Sans JP', 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    header { border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--black); z-index: 200; }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a { color: var(--gray-light); font-size: 0.8rem; letter-spacing: 0.05em; text-decoration: none; transition: color 0.2s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn { background: var(--red); color: var(--white); border: none; padding: 0.5rem 1.1rem; font-family: inherit; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+    .layout { display: flex; transition: margin-right 0.3s ease; }
+    .layout.panel-open { margin-right: var(--panel-width); }
+    main { flex: 1; min-width: 0; }
+    .hero { padding: 5rem 3rem 3rem; max-width: 860px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc { font-size: 1rem; color: var(--gray-light); max-width: 580px; margin-bottom: 1.5rem; }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+    .plan-container { max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
+    .plan-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .slide-frame-wrapper { position: relative; width: 100%; padding-top: 59.27%; background: var(--gray); border: 1px solid var(--border); }
+    .slide-frame-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .btn-link { text-decoration: none; display: inline-block; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.3rem; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+    .plan-content h2 { font-size: 1.4rem; font-weight: 900; color: var(--white); margin: 2.75rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .plan-content > h2:first-child, .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--red); margin: 1.75rem 0 0.75rem; }
+    .plan-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin: 1.25rem 0 0.5rem; }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre { background: var(--gray); border: 1px solid var(--border); padding: 1rem; overflow-x: auto; font-size: 0.82rem; color: var(--white); margin: 1rem 0; line-height: 1.5; }
+    .plan-content code { font-family: 'Courier New', monospace; }
+    .comment-panel { position: fixed; top: 0; right: calc(-1 * var(--panel-width)); width: var(--panel-width); height: 100vh; background: var(--gray); border-left: 1px solid var(--border); z-index: 150; display: flex; flex-direction: column; transition: right 0.3s ease; overflow: hidden; }
+    .comment-panel.open { right: 0; }
+    .panel-header { padding: 1.25rem 1.25rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; margin-top: 60px; }
+    .panel-header h2 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .panel-close { background: none; border: none; color: var(--gray-light); cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+    .panel-close:hover { color: var(--white); }
+    .panel-body { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .comment-form { background: var(--black); border: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .comment-form-title { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-light); margin-bottom: 0.2rem; }
+    .comment-form input, .comment-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.6rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical; }
+    .comment-form input:focus, .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder, .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn { background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.1rem; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item { background: var(--black); border: 1px solid var(--border); padding: 0.85rem 1rem; }
+    .comment-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn { background: none; border: none; color: var(--red); font-size: 0.72rem; font-family: inherit; cursor: pointer; margin-top: 0.4rem; padding: 0; letter-spacing: 0.05em; }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.5rem 0.7rem; font-family: inherit; font-size: 0.82rem; outline: none; min-height: 60px; resize: vertical; width: 100%; }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies { margin-top: 0.6rem; padding-left: 0.75rem; border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+    footer { max-width: 860px; margin: 0 auto; padding: 2rem 3rem; color: var(--gray-light); font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言010</p>
+      <h1>国土は<br><em>誰のもの</em>か</h1>
+      <p class="hero-desc">水源地・国境離島・防衛施設周辺が外国資本に買われ、都心の住宅価格が高騰する。土地の所有権に関する原則を取り戻し、安全保障と住宅市場の両面から国土を守る規制プラン。</p>
+      <p class="hero-meta">土地・不動産の外国人・外国資本取得規制プラン</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #010 ── 土地・不動産の外国人・外国資本取得規制プラン</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_010.pptx" download>スライド（PowerPoint・全22枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_010.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全22枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQp_KmkbWU1TZDX8tCWS6gCtozPGb8lnlRV84WzzxWjyyWp32BEtUqYmaDVfCFE1A/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 問題意識</h2>
+<p>日本は世界でも稀な「不動産取得が完全に自由な国」である。外国籍であろうと外国法人であろうと、日本人と全く同じ条件で土地を購入できる。この緩さが、以下の3つの問題を引き起こしている。</p>
+<ul>
+<li><strong>安全保障リスク</strong>：水源地・国境離島・防衛施設周辺の土地が外国資本に買われ、実質的に支配される事例が報告されている</li>
+<li><strong>住居費高騰</strong>：都心の高額マンション市場では、新築購入者の2〜4割が外国人という調査結果がある。投資マネーの流入が日本人の住宅取得を困難にしている</li>
+<li><strong>既存法制の機能不全</strong>：2022年施行の重要土地等規制法は調査権を与えたが、購入そのものを禁止する権限はない</li>
+</ul>
+<hr>
+<h2>1. 土地（戸建て等）の取得規制</h2>
+<h3>取得できる者・できない者</h3>
+<table>
+<thead><tr><th>区分</th><th>取得可否</th></tr></thead>
+<tbody>
+<tr><td>日本国籍（帰化を含む）</td><td>✅ 可能</td></tr>
+<tr><td>永住者（永住権保持者）</td><td>✅ 可能</td></tr>
+<tr><td>日本法人（外国資本比率15%以下）</td><td>✅ 可能</td></tr>
+<tr><td>就労・留学・観光等の在留資格を持つ外国人</td><td>❌ 不可（賃貸のみ）</td></tr>
+<tr><td>外国法人</td><td>❌ 不可</td></tr>
+<tr><td>日本法人（外国資本比率15%超）</td><td>❌ 不可</td></tr>
+</tbody>
+</table>
+<p>永住者は法務大臣による厳格な審査（原則10年以上の在留・素行善良要件等）を経て「国が認めた」存在のため、帰化者と同等に扱う。外国資本15%という基準は、外為法の対内直接投資審査制度等で用いられる警戒ラインを参考に設定した。</p>
+<h3>既存所有者への遡及適用</h3>
+<pre><code>制度開始（即時カウント開始）
+　↓ 5年以内
+まず国内の民間希望者への売却を優先する
+　↓ 買い手が見つからない場合
+国が最終的に買取を保証する</code></pre>
+<p>既得権は一切保護しない。5年の猶予期間中に売却できなかった分は国が買い取るが、「外国企業が必要としている土地は日本企業が買って貸せばビジネスとして成立する」という市場原理が働くため、国の買取が実際に発動するケースは限定的と想定する。</p>
+<h3>外資の土地利用：購入は不可だが賃貸は可能</h3>
+<p>一般エリアでは外国企業が土地を賃貸で利用することは引き続き認める。日本企業が土地を買い、外国企業に貸す構造により、土地の所有権は常に国内に固定されたまま、利用権だけを戦略的に動かせる。安価な賃料設定で誘致を有利に進めることも可能であり、これは経済安全保障上の「武器」として機能する。</p>
+<hr>
+<h2>2. 重要エリア：購入も賃貸も全面禁止</h2>
+<h3>対象エリア</h3>
+<ul>
+<li>水源地（ダム・取水場周辺）</li>
+<li>国境離島</li>
+<li>防衛施設・自衛隊基地周辺</li>
+<li>原子力発電所・電波塔等の重要インフラ周辺</li>
+<li>その他、国が指定した区画（将来の新たなリスクに備えた余白条項）</li>
+</ul>
+<p>重要エリアでは賃貸による実質的な排他的支配を防ぐため、<strong>賃貸も含めて外国人・外国資本への提供を全面禁止</strong>する。</p>
+<h3>国による年4回の定期調査</h3>
+<p>事業者側からの自己申告ではなく、<strong>国が能動的に年4回、現地を調査する</strong>。調査内容は土地の使用状況・所有者と実質使用者の特定・資金源の追跡を含む。日本国籍者の名義を借りた実質支配（名義貸し）の摘発もこの調査に統合する。</p>
+<hr>
+<h2>3. マンション（区分所有）の取得規制</h2>
+<h3>設計思想：「誰が買うか」ではなく「何のために買うか」</h3>
+<table>
+<thead><tr><th>区分</th><th>扱い</th></tr></thead>
+<tbody>
+<tr><td>居住目的での購入</td><td>✅ 国籍を問わず誰でも可能（敷地権も含む）</td></tr>
+<tr><td>投資・賃貸目的での購入（買って他人に貸す）</td><td>❌ 外国人は不可</td></tr>
+</tbody>
+</table>
+<h3>居住実績ルール（購入後の継続条件）</h3>
+<p>購入後3年間で<strong>400日以上の居住実績</strong>が必要。未達の場合は罰金・課徴金を科す（所有の継続は可能）。海外赴任等のやむを得ない事情がある場合は申請により緩和を認めるが、<strong>連続申請は不可</strong>とする。</p>
+<h3>土地規制とマンション規制の相乗効果</h3>
+<pre><code>外国資本は土地を買えない
+　↓
+タワマンを建てたい外資デベロッパーは土地を「借りる」しかない
+　↓
+借地なので地主（日本企業）の方針転換リスクが常につきまとう
+　↓
+リスクの大きい借地に巨額投資するのは敬遠される
+　↓
+外資による大型タワマン開発が自然に抑制される</code></pre>
+<p>土地の所有規制とマンションの用途規制が両方揃うことで、「外資マネーによる住居費高騰」という問題全体に対する二重の防波堤として機能する。</p>
+<hr>
+<h2>4. 経済効果の試算</h2>
+<h3>前提データ（2024〜25年）</h3>
+<table>
+<thead><tr><th>指標</th><th>数値</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>国外居住者の新築マンション取得割合（東京23区）</td><td>3.5%</td><td>国土交通省（2025年1〜6月）</td></tr>
+<tr><td>同・都心6区限定</td><td>7.5%</td><td>同上</td></tr>
+<tr><td>都心3区の高額帯（億ション）の外国人割合</td><td>2〜4割</td><td>三菱UFJ信託銀行調査</td></tr>
+</tbody>
+</table>
+<h3>マイナス影響：新規供給の停滞</h3>
+<table>
+<thead><tr><th>シナリオ</th><th>内容</th><th>影響規模</th></tr></thead>
+<tbody>
+<tr><td>保守的試算</td><td>都心高額帯の外資系開発が1〜2割減</td><td>全体供給への影響：約△1.5〜3%</td></tr>
+<tr><td>楽観的試算</td><td>日本企業が代替し外資撤退は限定的</td><td>ほぼ誤差範囲（△1%未満）</td></tr>
+</tbody>
+</table>
+<h3>プラス影響：価格下押し効果</h3>
+<table>
+<thead><tr><th>シナリオ</th><th>内容</th><th>影響規模</th></tr></thead>
+<tbody>
+<tr><td>保守的試算</td><td>都心高額帯の価格上昇が鈍化</td><td>年間上昇率が1〜2ポイント鈍化</td></tr>
+<tr><td>楽観的試算</td><td>投資マネー退出で価格調整</td><td>都心高額帯で5〜10%程度の価格下落</td></tr>
+</tbody>
+</table>
+<p>本試算には大きな不確実性が伴う。価格高騰の主因が外資需要か低金利・建設費高騰かについて専門家の見解は割れており、供給減少がかえって希少性を高める可能性も理論上は否定できない。安全保障上のリスク低減という非経済的な便益と合わせて、総合的に妥当性を判断すべきものである。</p>
+<hr>
+<h2>5. 全体構造のまとめ</h2>
+<table>
+<thead><tr><th>カテゴリ</th><th>ルール</th></tr></thead>
+<tbody>
+<tr><td>土地（一般エリア）</td><td>永住者・帰化者・外国資本15%以下の日本法人のみ取得可。それ以外は禁止（賃貸のみ）</td></tr>
+<tr><td>土地（重要エリア）</td><td>購入・賃貸とも全面禁止。国が年4回調査</td></tr>
+<tr><td>既存所有者（土地）</td><td>制度開始から即5年カウント。民間優先売却→国が買取保証</td></tr>
+<tr><td>マンション（区分所有・敷地権含む）</td><td>居住目的なら誰でも購入可。投資・賃貸目的は外国人不可</td></tr>
+<tr><td>マンション居住実績</td><td>3年で400日以上。未達は罰金（所有継続可）。海外赴任等は1回限り緩和申請可</td></tr>
+<tr><td>外資の土地利用（一般エリア）</td><td>賃貸は可（半導体工場等の誘致は継続）</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>6. 前提条件・今後の検討課題</h2>
+<ul>
+<li>「外国資本15%」の算定方法（議決権ベースか出資比率か、間接保有の扱い）</li>
+<li>永住権取得と土地取得インセンティブのセットによる悪用リスクへの対応</li>
+<li>重要エリアの「国が指定した区画」の指定プロセス・基準の明文化</li>
+<li>年4回の定期調査を実施する体制・人員・予算の設計</li>
+<li>マンションの居住実績確認方法（住民票・電気水道使用量等の組み合わせ）</li>
+<li>海外赴任等の「正当な理由」の判定基準の明文化</li>
+<li>既存の外国人所有者からの反発・国際的な反応への対応</li>
+<li>重要土地等規制法など既存法制との整合性・統合の要否</li>
+<li>外資への土地賃貸条件がWTO・FTA等の国際ルールと抵触しないかの精査</li>
+</ul>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+  let comments = JSON.parse(localStorage.getItem('rj_comments_010') || '[]');
+  function saveComments() { localStorage.setItem('rj_comments_010', JSON.stringify(comments)); }
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments(); renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments(); renderComments();
+  }
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header"><span class="reply-name">${r.name}</span><span class="reply-date">${formatDate(r.date)}</span></div>
+          <p class="reply-body">${r.body}</p>
+        </div>`).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header"><span class="comment-name">${c.name}</span><span class="comment-date">${formatDate(c.date)}</span></div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>`;
+    }).join('');
+  }
+  renderComments();
+</script>
+</body>
+</html>
