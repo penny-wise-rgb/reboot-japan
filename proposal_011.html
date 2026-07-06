@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言011：自動運転・無人物流特区による地域インフラ変革戦略 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a; --white: #f5f5f0; --red: #d62828; --red-dark: #a01f1f;
+      --gray: #1a1a1a; --gray-mid: #2e2e2e; --gray-light: #888; --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Noto Sans JP', 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    header { border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--black); z-index: 200; }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a { color: var(--gray-light); font-size: 0.8rem; letter-spacing: 0.05em; text-decoration: none; transition: color 0.2s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn { background: var(--red); color: var(--white); border: none; padding: 0.5rem 1.1rem; font-family: inherit; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+    .layout { display: flex; transition: margin-right 0.3s ease; }
+    .layout.panel-open { margin-right: var(--panel-width); }
+    main { flex: 1; min-width: 0; }
+    .hero { padding: 5rem 3rem 3rem; max-width: 860px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc { font-size: 1rem; color: var(--gray-light); max-width: 580px; margin-bottom: 1.5rem; }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+    .plan-container { max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
+    .plan-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .slide-frame-wrapper { position: relative; width: 100%; padding-top: 59.27%; background: var(--gray); border: 1px solid var(--border); }
+    .slide-frame-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .btn-link { text-decoration: none; display: inline-block; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.3rem; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+    .plan-content h2 { font-size: 1.4rem; font-weight: 900; color: var(--white); margin: 2.75rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .plan-content > h2:first-child, .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--red); margin: 1.75rem 0 0.75rem; }
+    .plan-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin: 1.25rem 0 0.5rem; }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre { background: var(--gray); border: 1px solid var(--border); padding: 1rem; overflow-x: auto; font-size: 0.82rem; color: var(--white); margin: 1rem 0; line-height: 1.5; }
+    .plan-content code { font-family: 'Courier New', monospace; }
+    .comment-panel { position: fixed; top: 0; right: calc(-1 * var(--panel-width)); width: var(--panel-width); height: 100vh; background: var(--gray); border-left: 1px solid var(--border); z-index: 150; display: flex; flex-direction: column; transition: right 0.3s ease; overflow: hidden; }
+    .comment-panel.open { right: 0; }
+    .panel-header { padding: 1.25rem 1.25rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; margin-top: 60px; }
+    .panel-header h2 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .panel-close { background: none; border: none; color: var(--gray-light); cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+    .panel-close:hover { color: var(--white); }
+    .panel-body { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .comment-form { background: var(--black); border: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .comment-form-title { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-light); margin-bottom: 0.2rem; }
+    .comment-form input, .comment-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.6rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical; }
+    .comment-form input:focus, .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder, .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn { background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.1rem; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item { background: var(--black); border: 1px solid var(--border); padding: 0.85rem 1rem; }
+    .comment-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn { background: none; border: none; color: var(--red); font-size: 0.72rem; font-family: inherit; cursor: pointer; margin-top: 0.4rem; padding: 0; letter-spacing: 0.05em; }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.5rem 0.7rem; font-family: inherit; font-size: 0.82rem; outline: none; min-height: 60px; resize: vertical; width: 100%; }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies { margin-top: 0.6rem; padding-left: 0.75rem; border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+    footer { max-width: 860px; margin: 0 auto; padding: 2rem 3rem; color: var(--gray-light); font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言011</p>
+      <h1>地方の足を、<br><em>無人</em>で守る</h1>
+      <p class="hero-desc">公共交通の崩壊と物流の担い手不足は待ったなし。既存業界への延命補助金を全廃し、自動運転・無人物流への業態転換に挑む民間企業への直接投資と規制緩和に切り替える、都道府県単位の特区戦略。</p>
+      <p class="hero-meta">自動運転・無人物流特区による地域インフラ変革戦略</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #011 ── 自動運転・無人物流特区による地域インフラ変革戦略</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_011.pptx" download>スライド（PowerPoint・全28枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_011.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全28枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRfbQZcuDQDq0cP5limDequz_ikqoncAT_bcmrFHRye8yDCKNiURN-VaJEc7NJthg/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>0. 提言の背景と大原則（思想）</h2>
+<p>日本全体での一律な自動運転（レベル4）の実装は、過剰な慎重論や既存業界の利害調整によって停滞している。しかし、地方の公共交通の崩壊や物流の24時間化対応は一刻の猶予もない。</p>
+<p>本提言では、「都道府県単位の特区」に法的な権限を大幅に委譲し、既存業界の延命ではなく、旧業態から新業態（完全自動運転・無人物流・スマート農業）へのトランスフォーメーションを志す「民間企業」を主役に据える。徹底的な使途管理と引き換えに破壊的な規制緩和を地域限定で断行し、成功実績をベースに全国へ水平展開する。</p>
+<h3>基本哲学</h3>
+<ul>
+<li>既存業界の「延命」ではなく、業態転換に挑む「企業」を直接支援する</li>
+<li>補助金は「赤字の穴埋め」ではなく「次の一手を打つための資金」である</li>
+<li>本気で舵を切った自治体・企業だけが生き残る、退路のない設計とする</li>
+</ul>
+<hr>
+<h2>1. 「オープンエントリー制」による特区の選定ロジック</h2>
+<p>国が審査して特定の自治体を選ぶ「裁量型」を廃止し、客観的基準を満たせば即日認定される仕組みとする。</p>
+<h3>① 申請要件：「退路を断つ」条例の同時可決</h3>
+<p>特区の申請には、都道府県議会での「既得権益全廃・業態転換条例」の同時可決を必須とする。条例には、認定と同時に既存のタクシー・バス協会への延命補助金（燃料費補助・事務局経費等）を<strong>即時全廃</strong>し、無人運行への転換原資に100%充てることを明記する。</p>
+<p>自治体側の覚悟を法律の形で証明させることが目的であり、緩やかな経過措置は設けない。既存業界の延命に使われてきた予算の「出どころ」を、業態転換への直接投資に組み替えるという発想である。</p>
+<h3>② 優先枠：「課題の深刻度」による客観的なAIスコアリング</h3>
+<p>「過去5年間の公共交通機関の廃線・減便率」「高齢化率」「物流ドライバーの不足率」等の統計データからAIが自動でスコア算出し、深刻な地方・過疎地ほど最優先で自動認定する。</p>
+<h3>③ 有期限認定</h3>
+<p>一律3年間の有期限認定とする。3年目以降の扱いは第4章で詳述する「達成率連動モデル」に移行する。</p>
+<hr>
+<h2>2. 既存業界の補助金カットと運転手個人の扱い</h2>
+<h3>補助金カットは即時全廃を維持する</h3>
+<p>タクシー・バス協会等の既存業界団体への延命補助金は、特区認定と同時に<strong>即時に全廃</strong>する。段階的な経過措置は設けない。これは提言全体の「本気で舵を切った自治体・企業だけが生き残る」という設計思想と一貫させるための、意図的な選択である。</p>
+<h3>運転手個人への対応は「会社の責任」の範囲とする</h3>
+<p>補助金は「タクシー・バス<strong>会社</strong>」への延命資金であり、運転手個人の雇用そのものを政府が保証していたわけではない。よって、補助金カット後の雇用継続・配置転換・解雇は、すべて<strong>会社側の経営判断・労働法上の責任</strong>の範囲で処理される。</p>
+<ul>
+<li>補助金で人件費を賄っていた会社は、その責任において雇用を継続するか、正規の手続き（労働契約法・労働基準法に基づく解雇規制）に則って処遇を決定する</li>
+<li>本提言は、運転手個人向けの特別な移行支援策を独自に設計しない</li>
+<li>これは「会社は補助金がなくなったから即解雇していい」という意味ではなく、通常の労働契約・解雇規制の下で会社が判断する話であり、本提言が触れるべき範囲外と位置づける</li>
+</ul>
+<hr>
+<h2>3. 「新業態転換」に挑む個別企業への直接投資</h2>
+<h3>既存の業界団体向け補助金の全面廃止</h3>
+<p>タクシー協会等の既存の業界団体に対する、燃料費補助や事務局経費といった延命・利権のための補助金は一律で全廃する。</p>
+<h3>個別企業への「資産購入補助」による直接投資</h3>
+<p>予算は、自らリスクを取って自動運転・無人化へ舵を切る民間企業・交通事業者にダイレクトに投入し、完全無人車両（レベル4）やEVトラック、スマート農業機械といった「初期資産購入費用」および運行システムの構築費用に100%限定して支給する。</p>
+<p><strong>企業側のインセンティブ</strong>：初期コストが最大の障壁となる次世代資産を公費で大幅にカバーできるため、「古い業態にしがみつくより、最速で特区のルールに賛成して参入したほうが、後の市場競争で圧倒的に優位に立てる」という強力なインセンティブが機能する。</p>
+<hr>
+<h2>4. 審査とガバナンス：企業単位の達成率連動モデル</h2>
+<h3>基本設計：達成率に応じた段階的減額（企業単位で独立判定）</h3>
+<p>特区は都道府県単位で認定されるが、実際に補助金・規制緩和の恩恵を受けるのは個別企業である。剥奪・継続の判定は<strong>都道府県単位ではなく、企業単位で独立して行う</strong>。都道府県の特区自体が一括で評価されるのではなく、真面目に事業計画を達成している企業は、他の企業の不振に巻き添えを受けない。</p>
+<table>
+<thead><tr><th>フェーズ</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>0〜3年目</td><td>特区認定期間。「〇年までに運行の〇割を完全無人化（レベル4）へ移行する」という具体的な事業計画・数値目標の提出を義務付け、企業ごとに達成状況を評価する</td></tr>
+<tr><td>3年目以降</td><td>達成率が高い企業は継続支援。ただし補助金は「自走準備」のため段階的に減額する。減額率は達成率によって大きく変動する（高達成企業ほど減額は緩やか、低達成企業ほど減額は急）</td></tr>
+<tr><td>7年目</td><td>補助金プログラム自体が終了する</td></tr>
+<tr><td>8年目以降</td><td>全企業一律で補助金ゼロとし、完全自走とする</td></tr>
+</tbody>
+</table>
+<p>この設計により、「頑張っている企業の足を引っ張らない」かつ「いつまでも公費に頼れない」という2つの要請を両立させる。</p>
+<h3>別軸：不正流用・重大事故は即時剥奪</h3>
+<p>上記の達成率連動モデルとは別に、以下の場合は達成率にかかわらず<strong>即時に特区資格・補助金を剥奪</strong>する。</p>
+<ul>
+<li>予算の不透明な流用・目的外使用が発覚した場合</li>
+<li>重大事故（後述する安全基準を著しく下回る事故）を起こした場合</li>
+</ul>
+<p>達成率評価は「頑張りの度合い」を測るものであり、不正・重大事故は「頑張りとは無関係に即退場させるべきレッドライン」として明確に切り分ける。</p>
+<h3>事前審査：「業態転換コミットメント」の厳密な審査</h3>
+<p>単なる一時的な実証実験ではなく、具体的なビジネスプランと数値目標の提出を義務付ける。</p>
+<h3>事後管理：「資金使途ダッシュボード」によるリアルタイム管理</h3>
+<p>補助金がどのベンダーのシステム購入や車両調達に使われたか、全契約・領収書をオンラインでリアルタイム公開させる。目的外流用や身内企業への不当な発注が発覚した場合は、即座に補助金の全額返還と特区からの排除を命じる。</p>
+<hr>
+<h2>5. 特区限定で突破する「3つの規制緩和」</h2>
+<h3>① 深夜主要ルートの「自動運転専用化」</h3>
+<p>深夜（22時〜翌5時）、港湾や工場から高速ICを結ぶ特定幹線道路の1レーンを一般車進入禁止とし、完全無人トラック・配送ロボ専用レーンとする権限を都道府県に付与する。</p>
+<h3>② 公道と農地の「遠隔無人・シームレス走行」の解禁</h3>
+<p>農地間のわずかな公道移動において、ナンバー取得や運転手配置の義務を免除し、低速（時速10km以下など）の遠隔監視のみでシームレスに横断・走行可能とする。</p>
+<h3>③ 遠隔監視基準の「1対多（マルチマニング）」の完全自由化</h3>
+<p>「1人の遠隔監視者が同時に最大20台の自動運転車両を管理してよい」とし、無人運行のコストを有人時代の数分の1へと引き下げる。</p>
+<p>これらの規制緩和は、次章で定める安全性・責任分担の設計とセットで運用される。</p>
+<hr>
+<h2>6. 安全性・責任分担の設計</h2>
+<p>規制緩和を野放図に進めるのではなく、「無人だから加害者不在になる」ことがないよう、責任の所在を明確に設計する。</p>
+<h3>事故の一次的責任：システム・車両メーカーと運行企業で分担</h3>
+<p>無人運行中の事故の一次的な責任は、<strong>システム・車両メーカーと運行企業で、事故原因に応じて分担</strong>する。</p>
+<ul>
+<li>ソフトウェア・センサーの欠陥が原因 → システム・車両メーカーの責任</li>
+<li>運行監視体制の不備・整備不良が原因 → 運行企業の責任</li>
+<li>双方に原因がある場合 → 按分</li>
+</ul>
+<h3>原因確定前の被害者補償：無過失の仮払いモデル</h3>
+<p>事故原因の切り分けには専門的な調査が必要であり、時間がかかる。その間、被害者への補償が宙に浮くことを避けるため、<strong>原因確定前でも無過失の仮払いモデル</strong>で被害者に支払いを行う（日本の自賠責保険に近い発想）。原因確定後、企業間・メーカー間で正式な求償を行う。</p>
+<h3>事故原因の判定主体：国・第三者の専門委員会</h3>
+<p>事故原因の判定は、都道府県の特区担当部局ではなく、<strong>国・第三者の専門委員会</strong>が行う。委員会には、システム（ソフトウェア）・車両（機械工学）それぞれの専門家を必ず組み込む。</p>
+<h3>責任の拡張：接触の有無を問わない・誤動作の原因まで遡及</h3>
+<ul>
+<li><strong>人間側ドライバーの責任拡張</strong>：無人車両に対して無茶な運転・あおり運転的な挙動を行った場合、実際の接触がなくても、危険を生じさせた人間側ドライバーに責任を課す</li>
+<li><strong>誤動作原因への遡及</strong>：センサーの誤動作が事故を招いた場合、誤動作そのものを引き起こした原因（整備不良・製造上の欠陥等）まで遡って責任を問う</li>
+</ul>
+<p>「無人車両だから誰も罰せられない」という抜け道を作らないことが、この設計の核心である。</p>
+<hr>
+<h2>7. 財政的インパクト</h2>
+<h3>現行の関連予算規模（前提データ）</h3>
+<table>
+<thead><tr><th>項目</th><th>金額</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>「交通空白」解消等・地域交通リ・デザイン全体（令和7年度予算。自動運転社会実装推進事業もこの内数）</td><td>331億円（前年236億円）</td><td>国土交通省</td></tr>
+<tr><td>自動運転トラック実証（幹線輸送、令和8年度概算要求）</td><td>3.27億円（前年度比約40倍）</td><td>国土交通省 物流・自動車局</td></tr>
+<tr><td>自動運転バス社会実装推進事業の補助率</td><td>4/5（財務省予算執行調査によれば事業財源の88%が国費補助）</td><td>国土交通省／財務省</td></tr>
+</tbody>
+</table>
+<p>現状、自動運転バスの社会実装はすでに事業財源の88%が国費補助という、ほぼ「補助金依存」の構造になっている。本提言は、この補助金依存の構造自体を変えるのではなく、補助金の「出どころ」を業界延命目的から業態転換投資目的へ付け替える設計である。</p>
+<h3>車両単価（積み上げ試算のベースになる数字）</h3>
+<table>
+<thead><tr><th>項目</th><th>単価</th></tr></thead>
+<tbody>
+<tr><td>自動運転バス車両費（平均）</td><td>約1.1億円/台（既存バスの4〜5倍）</td></tr>
+<tr><td>自動運転バス車両費（改造費込み・事業者ヒアリングベース）</td><td>5,500万〜8,000万円/台</td></tr>
+<tr><td>3Dマップ・走行ルート整備費</td><td>1,000万〜2,000万円/路線</td></tr>
+</tbody>
+</table>
+<h3>初年度（Y年目）の積み上げ試算：小規模スタート</h3>
+<p>初年度は「5都道府県×各10台前後（計50台）」の小規模スタートを前提とする。</p>
+<table>
+<thead><tr><th>項目</th><th>単価</th><th>件数</th><th>金額</th></tr></thead>
+<tbody>
+<tr><td>自動運転車両購入・改造費</td><td>5,500万〜1.1億円/台</td><td>50台</td><td>27.5億〜55億円</td></tr>
+<tr><td>3Dマップ・走行ルート整備</td><td>1,000万〜2,000万円/路線</td><td>10路線（5都道府県×2路線）</td><td>1億〜2億円</td></tr>
+<tr><td><strong>初年度合計</strong></td><td></td><td></td><td><strong>約28.5億〜57億円</strong></td></tr>
+</tbody>
+</table>
+<h3>逆算チェック：既存予算との整合性</h3>
+<p>初年度の想定コスト（28.5億〜57億円）は、現行の自動運転トラック実証予算（3.27億円）よりはるかに大きいが、地域交通リ・デザイン全体予算（331億円）の1割弱に収まる規模である。既存のタクシー・バス業界向け延命補助金を全廃し、この財源に振り替えるという設計であれば、<strong>国全体の予算規模を大きく膨らませることなく実現可能な範囲</strong>と考えられる。</p>
+<p>ただし、この試算には以下の不確実性がある。</p>
+<ul>
+<li>既存のタクシー・バス業界向け延命補助金（燃料費補助・事務局経費等）の全国総額は、地域公共交通確保維持改善事業（331億円）の一部に過ぎず、都道府県ごとの内訳データが公表資料からは特定できていない。都道府県別の正確な金額は、今後総務省・国土交通省の詳細データで検証が必要</li>
+<li>車両単価は技術の成熟とともに下落が見込まれる（自動運転バス業界の見解では、車両価格が現状の3分の1〜10分の1になれば、既存の手動バスの運用コストを下回るとされる）。本試算は現行の高価格帯を前提とした保守的な数字である</li>
+</ul>
+<h3>3〜8年目にかけての財源カーブ</h3>
+<p>第4章で定めた「達成率連動の減額カーブ」は、財源設計にもそのまま連動する。</p>
+<pre><code>0〜3年目：フル支援（初期投資額をほぼ100%補助）
+3〜7年目：達成率に応じて逓減（高達成企業は緩やか、低達成企業は急減額）
+7年目　　：補助金プログラム終了
+8年目以降：全企業ゼロ（完全自走）</code></pre>
+<p>制度設計（第4章）と財源設計（本章）が同じ時間軸で連動する、一貫した構造である。</p>
+<hr>
+<h2>8. 前提条件・今後の検討課題</h2>
+<ul>
+<li>既存のタクシー・バス業界向け延命補助金（都道府県別内訳）の正確な金額把握</li>
+<li>車両価格の下落シナリオを織り込んだ複数年試算（3年後・7年後）</li>
+<li>「達成率」の具体的な測定指標（無人化移行率・事故率・収支改善率等）の重み付け設計</li>
+<li>不正流用・重大事故の具体的な認定基準（重大事故の閾値、調査期間の上限）</li>
+<li>国・第三者の専門委員会の設置根拠法・委員構成の具体設計</li>
+<li>無過失仮払いモデルの原資（保険料方式か公費方式か）の設計</li>
+<li>あおり運転的挙動・センサー誤動作の原因遡及に関する立証責任の分配</li>
+<li>スマート農業（農地間の公道移動）における第三者（歩行者・一般車両）との事故リスクの個別検証</li>
+</ul>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+  let comments = JSON.parse(localStorage.getItem('rj_comments_011') || '[]');
+  function saveComments() { localStorage.setItem('rj_comments_011', JSON.stringify(comments)); }
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments(); renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments(); renderComments();
+  }
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header"><span class="reply-name">${r.name}</span><span class="reply-date">${formatDate(r.date)}</span></div>
+          <p class="reply-body">${r.body}</p>
+        </div>`).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header"><span class="comment-name">${c.name}</span><span class="comment-date">${formatDate(c.date)}</span></div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>`;
+    }).join('');
+  }
+  renderComments();
+</script>
+</body>
+</html>
