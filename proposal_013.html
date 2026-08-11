@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提言013：企業補助金の抜本改革と未来創出・文化継承への国家投資集中 ── REBOOT JAPAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a; --white: #f5f5f0; --red: #d62828; --red-dark: #a01f1f;
+      --gray: #1a1a1a; --gray-mid: #2e2e2e; --gray-light: #888; --border: #2e2e2e;
+      --panel-width: 360px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Noto Sans JP', 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    header { border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--black); z-index: 200; }
+    .header-left { display: flex; align-items: center; gap: 2rem; }
+    .logo { font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .logo span { color: var(--red); }
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a { color: var(--gray-light); font-size: 0.8rem; letter-spacing: 0.05em; text-decoration: none; transition: color 0.2s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--white); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .comment-toggle-btn { background: var(--red); color: var(--white); border: none; padding: 0.5rem 1.1rem; font-family: inherit; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .comment-toggle-btn:hover { background: var(--red-dark); }
+    .layout { display: flex; transition: margin-right 0.3s ease; }
+    .layout.panel-open { margin-right: var(--panel-width); }
+    main { flex: 1; min-width: 0; }
+    .hero { padding: 5rem 3rem 3rem; max-width: 860px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero-desc { font-size: 1rem; color: var(--gray-light); max-width: 580px; margin-bottom: 1.5rem; }
+    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
+    .plan-container { max-width: 860px; margin: 0 auto; padding: 3rem 3rem 5rem; }
+    .plan-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .plan-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .slides-section { margin-bottom: 3rem; }
+    .slides-section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .slide-frame-wrapper { position: relative; width: 100%; padding-top: 59.27%; background: var(--gray); border: 1px solid var(--border); }
+    .slide-frame-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .btn-link { text-decoration: none; display: inline-block; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.3rem; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-link.primary { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .btn-link.primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-link.outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-link.outline:hover { border-color: var(--red); color: var(--red); }
+    .plan-content h2 { font-size: 1.4rem; font-weight: 900; color: var(--white); margin: 2.75rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+    .plan-content > h2:first-child, .plan-content > hr:first-child + h2 { margin-top: 0; }
+    .plan-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--red); margin: 1.75rem 0 0.75rem; }
+    .plan-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin: 1.25rem 0 0.5rem; }
+    .plan-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .plan-content ul, .plan-content ol { color: #ccc; font-size: 0.95rem; margin: 0 0 0.85rem 1.4rem; }
+    .plan-content li { margin-bottom: 0.35rem; }
+    .plan-content strong { color: var(--white); }
+    .plan-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .plan-content table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.85rem; }
+    .plan-content th, .plan-content td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; color: #ccc; }
+    .plan-content th { background: var(--gray-mid); color: var(--white); font-weight: 700; }
+    .plan-content tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .plan-content pre { background: var(--gray); border: 1px solid var(--border); padding: 1rem; overflow-x: auto; font-size: 0.82rem; color: var(--white); margin: 1rem 0; line-height: 1.5; }
+    .plan-content code { font-family: 'Courier New', monospace; }
+    .comment-panel { position: fixed; top: 0; right: calc(-1 * var(--panel-width)); width: var(--panel-width); height: 100vh; background: var(--gray); border-left: 1px solid var(--border); z-index: 150; display: flex; flex-direction: column; transition: right 0.3s ease; overflow: hidden; }
+    .comment-panel.open { right: 0; }
+    .panel-header { padding: 1.25rem 1.25rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; margin-top: 60px; }
+    .panel-header h2 { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .panel-close { background: none; border: none; color: var(--gray-light); cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+    .panel-close:hover { color: var(--white); }
+    .panel-body { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+    .comment-form { background: var(--black); border: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .comment-form-title { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-light); margin-bottom: 0.2rem; }
+    .comment-form input, .comment-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.6rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; transition: border-color 0.2s; width: 100%; resize: vertical; }
+    .comment-form input:focus, .comment-form textarea:focus { border-color: var(--red); }
+    .comment-form input::placeholder, .comment-form textarea::placeholder { color: var(--gray-light); }
+    .comment-form textarea { min-height: 80px; }
+    .btn { background: var(--red); color: var(--white); border: none; padding: 0.6rem 1.1rem; font-family: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .btn:hover { background: var(--red-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .comment-item { background: var(--black); border: 1px solid var(--border); padding: 0.85rem 1rem; }
+    .comment-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .comment-name { font-size: 0.82rem; font-weight: 700; }
+    .comment-date { font-size: 0.7rem; color: var(--gray-light); }
+    .comment-body { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+    .reply-btn { background: none; border: none; color: var(--red); font-size: 0.72rem; font-family: inherit; cursor: pointer; margin-top: 0.4rem; padding: 0; letter-spacing: 0.05em; }
+    .reply-btn:hover { text-decoration: underline; }
+    .reply-form { margin-top: 0.6rem; display: none; }
+    .reply-form.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reply-form textarea { background: var(--gray); border: 1px solid var(--border); color: var(--white); padding: 0.5rem 0.7rem; font-family: inherit; font-size: 0.82rem; outline: none; min-height: 60px; resize: vertical; width: 100%; }
+    .reply-form textarea:focus { border-color: var(--red); }
+    .replies { margin-top: 0.6rem; padding-left: 0.75rem; border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+    .reply-header { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.25rem; }
+    .reply-name { font-size: 0.78rem; font-weight: 700; }
+    .reply-date { font-size: 0.68rem; color: var(--gray-light); }
+    .reply-body { font-size: 0.82rem; color: #ccc; line-height: 1.5; }
+    .no-comments { font-size: 0.82rem; color: var(--gray-light); text-align: center; padding: 1.5rem 0; }
+    footer { max-width: 860px; margin: 0 auto; padding: 2rem 3rem; color: var(--gray-light); font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    @media (max-width: 600px) {
+      .hero, .plan-container { padding: 2.5rem 1rem; }
+      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+      .header-left { gap: 1rem; }
+      :root { --panel-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">REBOOT <span>JAPAN</span></div>
+    <nav class="main-nav">
+      <a href="index.html">トップ</a>
+      <a href="proposals.html" class="active">提言一覧</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <button class="comment-toggle-btn" onclick="togglePanel()">💬 コメント</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">政策提言プラットフォーム ── 提言013</p>
+      <h1>補助金を、<br><em>未来</em>への投資に</h1>
+      <p class="hero-desc">成熟産業への延命補助金を全廃し、浮いた財源を量子・宇宙・海洋資源等の未来技術に集中投資する。伝統文化には恒久財源を保証し、雇用維持ではなく離職後の再就職支援へと発想を転換する政策提言。</p>
+      <p class="hero-meta">企業補助金の抜本改革と未来創出・文化継承への国家投資集中</p>
+    </section>
+
+    <div class="plan-container">
+      <p class="plan-label">提言 #013 ── 企業補助金の抜本改革と未来創出・文化継承への国家投資集中</p>
+
+      <div class="plan-actions">
+        <a class="btn-link primary" href="policy/proposal_013.pptx" download>スライド（PowerPoint・全28枚）をダウンロード</a>
+        <a class="btn-link outline" href="policy/proposal_013.md" download>提言本文（Markdown）をダウンロード</a>
+      </div>
+
+      <div class="slides-section">
+        <p class="slides-section-label">解説スライド（全28枚）</p>
+        <div class="slide-frame-wrapper">
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ6hePYf8TPDi4cpr0jB_ea-zyRpxMygfVq0xPFvIHAHRKIxiUPGc0fDLlswIPahw/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="plan-content">
+<hr>
+<h2>1. 提言の目的と基本理念</h2>
+<p>本提言は、国民の税金を原資とする企業補助金の「安易なバラマキ」や「成熟産業の延命措置」を完全に排し、日本の産業構造を自立型・未来志向型へと強固に再構築することを目的とする。</p>
+<p>国費投入は「10年後の未来を切り拓くフロンティア領域」と「失ってはならない日本独自の伝統文化」の2軸に厳格に限定し、既存の産業界には自律的経営と健全な市場淘汰を促す。同時に、補助金で守ってきた雇用そのものではなく、離職した人が次の仕事に移るまでの支援に国費を振り向ける。</p>
+<hr>
+<h2>2. 提言の5大コア原則</h2>
+
+<h3>① トヨタ「ウーブン・シティ」型未来都市・フロンティア投資への限定</h3>
+<p>企業に対する直接的な研究・設備投資補助金は、10年後の日本の産業競争力を決定づける国家戦略分野、および実証型・社会実装型の未来プロジェクトにのみ集中投下する。</p>
+<p><strong>審査は「業種」ではなく「プロジェクト」で行う。</strong>「この会社はレガシーか未来か」を問うのではなく、「このプロジェクトが対象技術領域に該当するか」だけで判定する。タクシー会社であっても自動運転（フィジカルAI領域）への投資プロジェクトなら対象になり、トヨタであっても対象外の設備更新には出さない。企業や業種のレッテルではなく、投資そのものの中身で審査する。</p>
+<ul>
+<li><strong>象徴的対象:</strong> トヨタの「ウーブン・シティ」に代表される、AI・ロボティクス・自動運転・水素エネルギー・スマートインフラが一体となった実証型・未来都市開発プロジェクト。</li>
+</ul>
+<p><strong>対象技術領域（このリストへの該当性のみで審査）:</strong></p>
+<ul>
+<li><strong>海底レアアース・海洋資源開発</strong>（資源自給率の向上）</li>
+<li><strong>量子コンピュータ・量子技術</strong>（次世代計算基盤の獲得）</li>
+<li><strong>宇宙開発・宇宙インフラ</strong>（新産業・安全保障基盤の構築）</li>
+<li><strong>フィジカルAI</strong>（物理世界で稼働するロボティクスAI）</li>
+</ul>
+
+<h3>② レガシー（成熟・飽和）業界向け汎用補助金プログラムの全面撤廃</h3>
+<p>既存の市場が確立・飽和している業界を主な受益者とする汎用型の補助金プログラムそのものを、業種を問わず一律で全廃する。「タクシー・鉄鋼・造船・化学が対象」という発想ではなく、<strong>プログラムの性質</strong>（成熟市場への延命支援かどうか）で判断する。</p>
+<ul>
+<li><strong>廃止対象プログラム例:</strong> ものづくり補助金・IT導入補助金・持続化補助金等（生産性革命推進事業）、雇用調整助成金、中小企業信用補完制度関連補助事業。</li>
+<li><strong>狙い:</strong> 自活すべき業界への国費投入をゼロとし、民間の事業再編、M&amp;A、自律的構造改革を促す。</li>
+</ul>
+
+<h3>③ 例外規定：日本独自の「守るべき伝統文化」の恒久保護</h3>
+<p>レガシー領域において唯一補助金の対象とするのは、市場原理に晒すことで途絶する恐れがある「日本独自の守るべき伝統文化・伝統工芸・歴史的インフラ」のみとする。ここは削減対象ではなく、<strong>恒久的な国家コミットメントとして再定義</strong>する。</p>
+<ul>
+<li><strong>伝統的工芸品（後継者育成・技術継承）:</strong> 現行11億円から<strong>220億円</strong>へ拡充（約20倍）。原材料確保、若手後継者育成、需要開拓を大幅強化。</li>
+<li><strong>神社仏閣等の歴史的建築物（国宝・重要文化財の保存修理を中心とする既存574億円規模）:</strong> 金額は現状維持のまま、時限的な予算ではなく<strong>恒久財源</strong>であることを法的に明記する。</li>
+<li><strong>伝統芸能（歌舞伎・能楽・文楽等の公開・伝承者養成）:</strong> 現状は複数の基金・補助金制度に分散しており、専用予算を単離した公式統計は存在しない。本提言では、国立劇場等の運営費・伝承者養成費を<strong>恒久財源として位置づけ直す</strong>ことを原則とし、具体額は今後の精査に委ねる。</li>
+</ul>
+
+<h3>④ 補助金受給に関する厳格な3大制約</h3>
+<p>補助金を交付する際、および雇用・経営支援における厳格なガイドラインを設ける。</p>
+<ul>
+<li><strong>Made in Japan 加点原則:</strong> 補助金を用いた設備投資・資材調達について、日本製（Made in Japan）比率に応じて<strong>補助率を上乗せする加点方式</strong>とする。必須条件（義務化）にはしない。義務化はWTO補助金協定（SCM協定）第3条が禁止する「国産品優先を条件とする補助金」に該当し、国際紛争リスクが極めて高いため、任意のインセンティブ設計にとどめることで国費の海外流出防止と国際法整合性を両立させる。</li>
+<li><strong>倒産回避・延命補助金の廃止:</strong> よっぽどの理由がない限り、経営破綻や倒産を回避するための救済目的の補助金・融資優遇は全廃する。</li>
+<li><strong>雇用補助金の対象限定:</strong> 一般の雇用維持（雇用調整助成金等）や外国人雇用の促進補助金はすべて廃止し、<strong>「障害者雇用」</strong>に対する支援のみに限定・集中する。</li>
+</ul>
+
+<h3>⑤ 離職後の再就職支援（労働移動支援）</h3>
+<p>雇用を「維持させる」ための補助金から、離職した人が次の仕事に円滑に移るための支援へと国費の使い道を転換する。企業が構造改革のために人員を整理しやすくする一方で、離職者本人には手厚い再就職支援を用意する。</p>
+<ul>
+<li><strong>財源:</strong> 現行の「大規模成長投資補助金」（賃上げを条件に大規模設備投資を支援する制度、4,121億円）を廃止し、同額をこの柱の財源とする。</li>
+<li><strong>狙い:</strong> 補助金による雇用の固定化ではなく、労働移動を前提とした社会全体の生産性向上。</li>
+</ul>
+<hr>
+<h2>3. 基礎研究の「大学一元化」と産学連携の強化</h2>
+<ul>
+<li><strong>企業向け基礎研究補助金の廃止:</strong> 自社内に閉じた基礎研究への助成を打ち切る。</li>
+<li><strong>大学への研究機能集約と寄付金還流:</strong> 基礎研究は大学へ一元化。企業が大学へ寄付金や共同研究費を投入しやすくなる税制優遇措置を拡充し、企業資金による「大学の財務基盤強化とオープンイノベーション」を推進する。</li>
+<li><strong>実用化タイムラグへの目配り:</strong> 基礎研究を大学に集約すると、企業の実用化スピードとの間にタイムラグが生じうる。この橋渡しは、既存の産学連携税制（大学への寄付金・共同研究費の税額控除拡充）と、①のフロンティア投資審査における大学発シーズの優先採択によって埋める。</li>
+</ul>
+<hr>
+<h2>4. 財政試算</h2>
+<h3>基本構造：新規増税ではなく「予算の組み替え」</h3>
+<p>本提言の最大の特徴は、<strong>新規の国民負担を求めず、既存の補助金予算を組み替えるだけで実現できる</strong>点にある。歳出の純増は伝統文化保護の一部にとどまり、大半は既存予算の付け替えである。</p>
+
+<h3>① レガシー補助金の全廃 → フロンティア投資へ</h3>
+<table>
+<thead><tr><th>廃止対象</th><th>金額</th></tr></thead>
+<tbody>
+<tr><td>生産性革命推進事業（ものづくり・IT導入・持続化補助金）</td><td>3,400億円</td></tr>
+<tr><td>雇用調整助成金</td><td>145億円</td></tr>
+<tr><td>特定求職者雇用開発助成金（高齢者・氷河期世代等の一般雇用支援分）</td><td>486.7億円（上限値）</td></tr>
+<tr><td>中小企業信用補完制度関連補助事業</td><td>32億円</td></tr>
+<tr><td><strong>フロンティア投資への振替原資（小計）</strong></td><td><strong>約4,064億円</strong></td></tr>
+</tbody>
+</table>
+<p>※特定求職者雇用開発助成金には障害者雇用支援分（存続）が含まれるため、実際の削減額はこれよりやや小さくなる。国の統計では内訳が公表されていないため、ここでは上限値を計上する。</p>
+<p>※事業再構築補助金（過去に補正予算で最大1.1兆円規模）は年度による変動が大きく、本試算には含めない。単年度の補正予算に依存した延命的な制度運営そのものを見直すべき、という制度改革の論点として別途扱う。</p>
+
+<h3>② 大規模成長投資補助金の用途転換</h3>
+<table>
+<thead><tr><th>項目</th><th>金額</th></tr></thead>
+<tbody>
+<tr><td>大規模成長投資補助金（賃上げ紐づけ型・廃止）</td><td>4,121億円</td></tr>
+</tbody>
+</table>
+<p>同額を⑤離職後再就職支援の財源として転用する。財政的には収支中立（ネット増減ゼロ）。</p>
+
+<h3>③ 伝統文化保護の恒久財源化</h3>
+<table>
+<thead><tr><th>項目</th><th>現状</th><th>目標</th><th>純増</th></tr></thead>
+<tbody>
+<tr><td>伝統的工芸品産業支援</td><td>11億円</td><td>220億円</td><td>+209億円</td></tr>
+<tr><td>神社仏閣保護（国宝・重文建造物中心）</td><td>574億円</td><td>574億円（恒久財源として明記）</td><td>±0</td></tr>
+<tr><td>伝統芸能（歌舞伎・能楽・文楽等）</td><td>制度分散で現状額の単離困難</td><td>運営費の恒久財源化を明記（金額は別途精査）</td><td>未定</td></tr>
+</tbody>
+</table>
+<p>純増分として確定しているのは伝統的工芸品の209億円のみ。神社仏閣・伝統芸能は金額を増やすことよりも、「恒久的な国家コミットメント」として位置づけ直すことが主眼である。</p>
+
+<h3>保守的シナリオ・楽観的シナリオ</h3>
+<table>
+<thead><tr><th></th><th>保守的</th><th>楽観的</th></tr></thead>
+<tbody>
+<tr><td>レガシー廃止による原資</td><td>約3,800億円（特定求職者雇用開発助成金の障害者雇用分を除外）</td><td>約4,064億円（上限値）</td></tr>
+<tr><td>フロンティア投資への追加投入額</td><td>約3,800億円/年</td><td>約4,064億円/年</td></tr>
+<tr><td>財政負担の純増</td><td>209億円（工芸分のみ）</td><td>209億円＋伝統芸能分（精査後に確定）</td></tr>
+</tbody>
+</table>
+<p>いずれのシナリオでも、フロンティア投資は年間4,000億円規模の新規原資を得る一方、国民負担の純増は数百億円規模に収まる。</p>
+<hr>
+<h2>5. 実行ロードマップ（概要）</h2>
+<h3>1年目：既存補助金制度の全廃・棚卸し</h3>
+<p>成熟産業支援・倒産回避目的・一般雇用助成金を一括廃止する法改正の断行。大規模成長投資補助金を離職後再就職支援へ転用する制度設計を開始する。</p>
+<h3>2年目：「伝統文化保護特別枠」「大学寄付金還流税制」「プロジェクト単位審査基準」の創設</h3>
+<p>伝統的工芸品220億円への拡充、神社仏閣・伝統芸能予算の恒久財源化の法的位置づけ、大学への企業寄付控除制度の拡充、フロンティア投資の対象技術領域リストと審査基準の策定。</p>
+<h3>3年目〜：「10年後未来創出ファンド（ウーブン型枠）」と「離職後再就職支援制度」の本格運用</h3>
+<p>未来都市・フィジカルAI・海洋資源等の対象プロジェクト選定、Made in Japan比率に応じた加点審査の本格運用、離職後再就職支援の実施体制整備。</p>
+<hr>
+<h2>結論</h2>
+<p>補助金を「過去の救済」から「未来の創出」と「文化の継承」へと完全に転換する。レガシー業界向けの汎用補助金と雇用維持型の助成金を廃止し、浮いた年間約4,000億円をフロンティア投資に振り向ける一方、賃上げ紐づけの成長投資補助金は離職後の再就職支援に組み替える。伝統文化には恒久的な財源保証を与え、国民の新たな負担は伝統工芸拡充分の209億円にとどめる。これにより、企業には自立と挑戦を促し、日本が世界に対して圧倒的な価値を提示できる未来型産業構造を提示する。</p>
+<hr>
+<h2>6. 前提条件・今後の検討課題</h2>
+<ul>
+<li>伝統芸能予算の具体額の精査（現状は複数制度に分散しており、恒久財源化する具体的な金額を今後積み上げる必要がある）</li>
+<li>特定求職者雇用開発助成金の内訳精査（障害者雇用分と一般雇用分の公式な内訳データがなく、正確な削減額の確定が必要）</li>
+<li>Made in Japan加点方式の補助率設計（国内調達比率と補助率上乗せ幅の具体的な数式）</li>
+<li>大学一元化による実用化タイムラグの継続的な検証</li>
+<li>事業再構築補助金など補正予算依存プログラムの制度改革の具体設計</li>
+</ul>
+  </main>
+</div>
+
+<div class="comment-panel" id="commentPanel">
+  <div class="panel-header">
+    <h2>コメント・議論</h2>
+    <button class="panel-close" onclick="togglePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="comment-form">
+      <p class="comment-form-title">コメントを投稿</p>
+      <input type="text" id="nameInput" placeholder="名前（匿名可）">
+      <textarea id="commentInput" placeholder="この提言についてコメントしてください..."></textarea>
+      <button class="btn" onclick="addComment()">投稿する</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+  <span><a href="proposals.html">← 提言一覧へ戻る</a></span>
+</footer>
+
+<script>
+  let panelOpen = false;
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('commentPanel').classList.toggle('open', panelOpen);
+    document.getElementById('layout').classList.toggle('panel-open', panelOpen);
+  }
+  let comments = JSON.parse(localStorage.getItem('rj_comments_013') || '[]');
+  function saveComments() { localStorage.setItem('rj_comments_013', JSON.stringify(comments)); }
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function addComment() {
+    const name = document.getElementById('nameInput').value.trim() || '匿名';
+    const body = document.getElementById('commentInput').value.trim();
+    if (!body) return;
+    comments.unshift({ id: Date.now(), name, body, date: new Date().toISOString(), replies: [] });
+    saveComments(); renderComments();
+    document.getElementById('nameInput').value = '';
+    document.getElementById('commentInput').value = '';
+  }
+  function addReply(commentId) {
+    const ta = document.getElementById(`replyText-${commentId}`);
+    const body = ta.value.trim();
+    if (!body) return;
+    const comment = comments.find(c => c.id === commentId);
+    if (!comment) return;
+    comment.replies.push({ name: '匿名', body, date: new Date().toISOString() });
+    saveComments(); renderComments();
+  }
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`replyForm-${commentId}`);
+    if (form) form.classList.toggle('open');
+  }
+  function renderComments() {
+    const list = document.getElementById('commentsList');
+    if (comments.length === 0) {
+      list.innerHTML = '<p class="no-comments">まだコメントはありません。最初のコメントを投稿してください。</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const repliesHTML = c.replies.map(r => `
+        <div class="reply-item">
+          <div class="reply-header"><span class="reply-name">${r.name}</span><span class="reply-date">${formatDate(r.date)}</span></div>
+          <p class="reply-body">${r.body}</p>
+        </div>`).join('');
+      return `
+        <div class="comment-item">
+          <div class="comment-header"><span class="comment-name">${c.name}</span><span class="comment-date">${formatDate(c.date)}</span></div>
+          <p class="comment-body">${c.body}</p>
+          <button class="reply-btn" onclick="toggleReplyForm(${c.id})">返信する</button>
+          <div class="reply-form" id="replyForm-${c.id}">
+            <textarea id="replyText-${c.id}" placeholder="返信を入力..."></textarea>
+            <button class="btn" style="font-size:0.72rem;padding:0.45rem 0.9rem;" onclick="addReply(${c.id})">返信する</button>
+          </div>
+          ${c.replies.length > 0 ? `<div class="replies">${repliesHTML}</div>` : ''}
+        </div>`;
+    }).join('');
+  }
+  renderComments();
+</script>
+</body>
+</html>
