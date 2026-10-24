@@ -1,346 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>提言一覧 ── REBOOT JAPAN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black: #0a0a0a;
-      --white: #f5f5f0;
-      --red: #d62828;
-      --red-dark: #a01f1f;
-      --gray: #1a1a1a;
-      --gray-mid: #2e2e2e;
-      --gray-light: #888;
-      --border: #2e2e2e;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Noto Sans JP', 'Inter', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* HEADER */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      background: var(--black);
-      z-index: 200;
-    }
-    .header-left { display: flex; align-items: center; gap: 2rem; }
-    .logo {
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--white);
-    }
-    .logo span { color: var(--red); }
-    .main-nav { display: flex; gap: 1.5rem; }
-    .main-nav a {
-      color: var(--gray-light);
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .main-nav a:hover, .main-nav a.active { color: var(--white); }
-
-    /* HERO */
-    .hero {
-      padding: 5rem 3rem 3rem;
-      max-width: 860px;
-      margin: 0 auto;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 em { font-style: normal; color: var(--red); }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--gray-light);
-      max-width: 580px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-meta { font-size: 0.78rem; color: var(--gray-light); letter-spacing: 0.05em; }
-
-    /* PROPOSALS LIST */
-    .proposals-container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3rem 3rem 5rem;
-    }
-    .proposals-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .proposal-list {
-      display: flex;
-      flex-direction: column;
-    }
-    .proposal-item {
-      display: grid;
-      grid-template-columns: 5rem 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.15s;
-      margin: 0 -1rem;
-    }
-    .proposal-item:first-child { border-top: 1px solid var(--border); }
-    .proposal-item:hover { background: var(--gray); }
-    .proposal-item.coming-soon {
-      opacity: 0.4;
-      cursor: default;
-      pointer-events: none;
-    }
-    .proposal-num {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--red);
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .proposal-body {}
-    .proposal-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 0.4rem;
-    }
-    .proposal-desc {
-      font-size: 0.85rem;
-      color: var(--gray-light);
-      line-height: 1.5;
-    }
-    .proposal-arrow {
-      font-size: 1.2rem;
-      color: var(--gray-mid);
-      transition: color 0.2s, transform 0.2s;
-    }
-    .proposal-item:hover .proposal-arrow {
-      color: var(--red);
-      transform: translateX(4px);
-    }
-    .proposal-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.5rem;
-      margin-left: 0.6rem;
-      vertical-align: middle;
-    }
-    .proposal-badge.new { background: var(--red); color: var(--white); }
-    .proposal-badge.soon { background: var(--gray-mid); color: var(--gray-light); }
-
-    /* FOOTER */
-    footer {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2rem 3rem;
-      color: var(--gray-light);
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 600px) {
-      .hero, .proposals-container { padding: 2.5rem 1rem; }
-      header { padding: 1rem; flex-wrap: wrap; gap: 0.75rem; }
-      .header-left { gap: 1rem; }
-      .proposal-item { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>提言一覧 ── REBOOT JAPAN</title>
+<meta name="description" content="制度・税制・社会の仕組みに潜む問題を、論理と数字で可視化し、具体的な改善案を提言するプラットフォームです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@900&display=swap">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-  <div class="header-left">
-    <a href="index.html" class="logo">REBOOT <span>JAPAN</span></a>
-    <nav class="main-nav">
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">REBOOT <span>JAPAN</span></a>
+    <nav class="main-nav" aria-label="サイト内">
       <a href="index.html">トップ</a>
-      <a href="proposals.html" class="active">提言一覧</a>
+      <a href="proposals.html" aria-current="page">提言一覧</a>
     </nav>
   </div>
+  
 </header>
 
 <main>
-  <section class="hero">
-    <p class="hero-eyebrow">政策提言プラットフォーム</p>
-    <h1>提言<em>一覧</em></h1>
-    <p class="hero-desc">制度・税制・社会の仕組みに潜む問題を、論理と数字で可視化し、具体的な改善案を提言するプラットフォームです。</p>
-    <p class="hero-meta">市民による・市民のための・政策議論の場</p>
-  </section>
-
-  <div class="proposals-container">
-    <p class="proposals-label">すべての提言</p>
-    <div class="proposal-list">
-
-      <a class="proposal-item" href="proposal_001.html">
-        <div class="proposal-num">#001</div>
-        <div class="proposal-body">
-          <div class="proposal-title">日本再起動（REBOOT）プラン</div>
-          <div class="proposal-desc">最低賃金・税制・社会保障・失業給付を一体改革。頑張る人が100%報われる社会へ。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_002.html">
-        <div class="proposal-num">#002</div>
-        <div class="proposal-body">
-          <div class="proposal-title">地域経営型・公務員制度改革プラン</div>
-          <div class="proposal-desc">公務員給与を民間実態に連動させ、任期10年制と成功報酬で地方自治体を「稼げる組織」へ変える。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_003.html">
-        <div class="proposal-num">#003</div>
-        <div class="proposal-body">
-          <div class="proposal-title">BtoB下請け産業の構造再編と成長ドライブ施策</div>
-          <div class="proposal-desc">無条件の優遇税制と延命補助金が固定してきた「負のループ」を断ち切る。零細を減らし、強い中堅企業を育てる産業大手術。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_004.html">
-        <div class="proposal-num">#004</div>
-        <div class="proposal-body">
-          <div class="proposal-title">相続税の不条理是正</div>
-          <div class="proposal-desc">事業承継を無税化し、居住用財産の評価を大幅に見直す。相続税を「富の独占」ではなく「次世代への継承」に再設計する。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_005.html">
-        <div class="proposal-num">#005</div>
-        <div class="proposal-body">
-          <div class="proposal-title">公的機関への用途指定寄付制度</div>
-          <div class="proposal-desc">ふるさと納税を廃止し、所得税・住民税・消費税の3つの財布から現場が提示したメニューへ直接寄付できる制度に刷新する。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_006.html">
-        <div class="proposal-num">#006</div>
-        <div class="proposal-body">
-          <div class="proposal-title">NHKの解体・分社化による受信料大幅引き下げと国家映像戦略への転換</div>
-          <div class="proposal-desc">受信料を月額600円へ。エンタメ分社化・人件費適正化・技研廃止・営業費ゼロの4つの柱で「義務に見合った公共放送」を実現する。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_007.html">
-        <div class="proposal-num">#007</div>
-        <div class="proposal-body">
-          <div class="proposal-title">教育・雇用一体型システム「21歳社会人スタート」への構造改革</div>
-          <div class="proposal-desc">「とりあえず大学」を解体する。高校3年で教養を完結し、18歳以降は3ルートに分離。21歳で奨学金ゼロの即戦力社会人を標準にする国家戦略。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_008.html">
-        <div class="proposal-num">#008</div>
-        <div class="proposal-body">
-          <div class="proposal-title">公費執行の「完全デジタル透明化」と多重下請け・利権構造の根絶</div>
-          <div class="proposal-desc">定額支給・中抜き・アナログ精算をテクノロジーで根絶する。税金が1円でも動く全プロセスを自動統制・完全可視化する国家改革。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_009.html">
-        <div class="proposal-num">#009</div>
-        <div class="proposal-body">
-          <div class="proposal-title">高校教育の「全面公立化」と地方財政傾斜配分による地方創生戦略</div>
-          <div class="proposal-desc">6,830億円のバラマキを回収し、教員給与を上位10%水準へ引き上げ。過疎地の公立高校に集中投資し、地方再生の連鎖を起動する。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_010.html">
-        <div class="proposal-num">#010</div>
-        <div class="proposal-body">
-          <div class="proposal-title">土地・不動産の外国人・外国資本取得規制プラン</div>
-          <div class="proposal-desc">水源地・国境離島・タワマン爆買いから国土を守る。外国人・外国資本による土地取得を規制し、所有権の原則を取り戻す。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_011.html">
-        <div class="proposal-num">#011</div>
-        <div class="proposal-body">
-          <div class="proposal-title">自動運転・無人物流特区による地域インフラ変革戦略</div>
-          <div class="proposal-desc">業界団体の延命補助金を全廃し、業態転換に挑む民間企業への直接投資と規制緩和を断行。地方の公共交通・物流を無人化で守る特区戦略。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_012.html">
-        <div class="proposal-num">#012</div>
-        <div class="proposal-body">
-          <div class="proposal-title">官公庁AI・DX特区による行政自動化と不正排除戦略</div>
-          <div class="proposal-desc">マイナンバー基盤の徹底活用、公共工事の多重下請け撲滅、生活保護AI即時判定を断行。判断そのものをAIに委ね、不正を根絶し住民満足度を高める特区戦略。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <a class="proposal-item" href="proposal_013.html">
-        <div class="proposal-num">#013</div>
-        <div class="proposal-body">
-          <div class="proposal-title">企業補助金の抜本改革と未来創出・文化継承への国家投資集中<span class="proposal-badge new">NEW</span></div>
-          <div class="proposal-desc">成熟産業への延命補助金を全廃し、量子・宇宙・海洋資源等の未来技術に集中投資。伝統文化には恒久財源を保証し、雇用維持ではなく離職後の再就職支援へ転換する。</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </a>
-
-      <div class="proposal-item coming-soon">
-        <div class="proposal-num">#014</div>
-        <div class="proposal-body">
-          <div class="proposal-title">次の提言<span class="proposal-badge soon">COMING SOON</span></div>
-          <div class="proposal-desc">準備中</div>
-        </div>
-        <div class="proposal-arrow">→</div>
-      </div>
-
+  <section class="doc-head graph">
+    <div class="wrap">
+      <p class="eyebrow">市民による政策提言プラットフォーム</p>
+      <h1>提言<em>一覧</em></h1>
+      <p class="doc-formal">制度・税制・社会の仕組みに潜む問題を、論理と数字で可視化し、具体的な改善案を提言するプラットフォームです。</p>
     </div>
-  </div>
+  </section>
+  <section class="section" id="patches">
+    <div class="wrap">
+      <div class="section-head"><h2>提言一覧</h2><span class="label" id="patch-count">13本を表示中</span></div>
+      <div class="chips" role="group" aria-label="分野で絞り込む">
+        <button class="chip" type="button" aria-pressed="true" data-filter="">すべて<span class="count">13</span></button><button class="chip" type="button" aria-pressed="false" data-filter="税・社会保障">税・社会保障<span class="count">3</span></button><button class="chip" type="button" aria-pressed="false" data-filter="行政・公共">行政・公共<span class="count">4</span></button><button class="chip" type="button" aria-pressed="false" data-filter="産業・経済">産業・経済<span class="count">3</span></button><button class="chip" type="button" aria-pressed="false" data-filter="教育">教育<span class="count">2</span></button><button class="chip" type="button" aria-pressed="false" data-filter="国土・安全保障">国土・安全保障<span class="count">1</span></button>
+      </div>
+      <ol class="patches" reversed>
+      <li class="patch soon-row">
+        <div class="soon">
+          <span class="patch-id"><span class="label">PATCH</span><b>014</b></span>
+          <span class="patch-body"><span class="patch-title">次の提言を準備中です</span></span>
+          <span class="patch-meta"></span>
+        </div>
+      </li>
+      <li class="patch" data-cat="産業・経済">
+        <a href="proposal_013.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>013</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">産業・経済</span><span class="badge-new">最新</span></span>
+            <span class="patch-title">企業補助金の抜本改革と未来創出・文化継承への国家投資集中</span>
+            <span class="patch-desc">成熟産業への延命補助金を全廃し、量子・宇宙・海洋資源等の未来技術に集中投資。伝統文化には恒久財源を保証し、雇用維持ではなく離職後の再就職支援へ転換する。</span>
+          </span>
+          <span class="patch-meta"><span>2026.08.11</span><span>約9分</span><span>スライド28枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="行政・公共">
+        <a href="proposal_012.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>012</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">行政・公共</span></span>
+            <span class="patch-title">官公庁AI・DX特区による行政自動化と不正排除戦略</span>
+            <span class="patch-desc">マイナンバー基盤の徹底活用、公共工事の多重下請け撲滅、生活保護AI即時判定を断行。判断そのものをAIに委ね、不正を根絶し住民満足度を高める特区戦略。</span>
+          </span>
+          <span class="patch-meta"><span>2026.07.16</span><span>約11分</span><span>スライド25枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="産業・経済">
+        <a href="proposal_011.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>011</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">産業・経済</span></span>
+            <span class="patch-title">自動運転・無人物流特区による地域インフラ変革戦略</span>
+            <span class="patch-desc">業界団体の延命補助金を全廃し、業態転換に挑む民間企業への直接投資と規制緩和を断行。地方の公共交通・物流を無人化で守る特区戦略。</span>
+          </span>
+          <span class="patch-meta"><span>2026.07.06</span><span>約12分</span><span>スライド28枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="国土・安全保障">
+        <a href="proposal_010.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>010</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">国土・安全保障</span></span>
+            <span class="patch-title">土地・不動産の外国人・外国資本取得規制プラン</span>
+            <span class="patch-desc">水源地・国境離島・タワマン爆買いから国土を守る。外国人・外国資本による土地取得を規制し、所有権の原則を取り戻す。</span>
+          </span>
+          <span class="patch-meta"><span>2026.07.01</span><span>約10分</span><span>スライド22枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="教育">
+        <a href="proposal_009.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>009</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">教育</span></span>
+            <span class="patch-title">高校教育の「全面公立化」と地方財政傾斜配分による地方創生戦略</span>
+            <span class="patch-desc">6,830億円のバラマキを回収し、教員給与を上位10%水準へ引き上げ。過疎地の公立高校に集中投資し、地方再生の連鎖を起動する。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.30</span><span>約10分</span><span>スライド17枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="行政・公共">
+        <a href="proposal_008.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>008</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">行政・公共</span></span>
+            <span class="patch-title">公費執行の「完全デジタル透明化」と多重下請け・利権構造の根絶</span>
+            <span class="patch-desc">定額支給・中抜き・アナログ精算をテクノロジーで根絶する。税金が1円でも動く全プロセスを自動統制・完全可視化する国家改革。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.28</span><span>約9分</span><span>スライド16枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="教育">
+        <a href="proposal_007.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>007</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">教育</span></span>
+            <span class="patch-title">教育・雇用一体型システム「21歳社会人スタート」への構造改革</span>
+            <span class="patch-desc">「とりあえず大学」を解体する。高校3年で教養を完結し、18歳以降は3ルートに分離。21歳で奨学金ゼロの即戦力社会人を標準にする国家戦略。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.28</span><span>約8分</span><span>スライド18枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="行政・公共">
+        <a href="proposal_006.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>006</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">行政・公共</span></span>
+            <span class="patch-title">NHKの解体・分社化による受信料大幅引き下げと国家映像戦略への転換</span>
+            <span class="patch-desc">受信料を月額600円へ。エンタメ分社化・人件費適正化・技研廃止・営業費ゼロの4つの柱で「義務に見合った公共放送」を実現する。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.24</span><span>約8分</span><span>スライド17枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="税・社会保障">
+        <a href="proposal_005.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>005</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">税・社会保障</span></span>
+            <span class="patch-title">公的機関への用途指定寄付制度</span>
+            <span class="patch-desc">ふるさと納税を廃止し、所得税・住民税・消費税の3つの財布から現場が提示したメニューへ直接寄付できる制度に刷新する。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.23</span><span>約14分</span><span>スライド22枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="税・社会保障">
+        <a href="proposal_004.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>004</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">税・社会保障</span></span>
+            <span class="patch-title">相続税の不条理是正</span>
+            <span class="patch-desc">事業承継を無税化し、居住用財産の評価を大幅に見直す。相続税を「富の独占」ではなく「次世代への継承」に再設計する。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.21</span><span>約8分</span><span>スライド23枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="産業・経済">
+        <a href="proposal_003.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>003</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">産業・経済</span></span>
+            <span class="patch-title">BtoB下請け産業の構造再編と成長ドライブ施策</span>
+            <span class="patch-desc">無条件の優遇税制と延命補助金が固定してきた「負のループ」を断ち切る。零細を減らし、強い中堅企業を育てる産業大手術。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.17</span><span>約12分</span><span>スライド15枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="行政・公共">
+        <a href="proposal_002.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>002</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">行政・公共</span></span>
+            <span class="patch-title">地域経営型・公務員制度改革プラン</span>
+            <span class="patch-desc">公務員給与を民間実態に連動させ、任期10年制と成功報酬で地方自治体を「稼げる組織」へ変える。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.15</span><span>約9分</span><span>スライド19枚</span></span>
+        </a>
+      </li>
+      <li class="patch" data-cat="税・社会保障">
+        <a href="proposal_001.html">
+          <span class="patch-id"><span class="label">PATCH</span><b>001</b></span>
+          <span class="patch-body">
+            <span class="tags"><span class="tag">税・社会保障</span></span>
+            <span class="patch-title">日本再起動（REBOOT）プラン</span>
+            <span class="patch-desc">最低賃金・税制・社会保障・失業給付を一体改革。頑張る人が100%報われる社会へ。</span>
+          </span>
+          <span class="patch-meta"><span>2026.06.17</span><span>約9分</span><span>スライド22枚</span></span>
+        </a>
+      </li>
+      </ol>
+    </div>
+  </section>
 </main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>REBOOT JAPAN ── 市民による政策提言プラットフォーム</span>
+    <a href="proposals.html">提言一覧へ</a>
+  </div>
+</footer>
 
-<footer>REBOOT JAPAN ── 市民による政策提言プラットフォーム</footer>
-
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const rows = document.querySelectorAll('.patch[data-cat]');
+  const soon = document.querySelector('.soon-row');
+  const count = document.getElementById('patch-count');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    let shown = 0;
+    rows.forEach(r => { const on = !f || r.dataset.cat === f; r.hidden = !on; if (on) shown++; });
+    soon.hidden = !!f;
+    count.textContent = shown + '本を表示中';
+  }));
+</script>
 </body>
 </html>
